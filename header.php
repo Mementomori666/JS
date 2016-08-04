@@ -1,11 +1,7 @@
 
-/**
- * Created by PhpStorm.
- * User: Егор
- * Date: 04.08.2016
- * Time: 22:22
- */
+
 <html>
+<meta charset="utf-8">
 <head>
 <title>Научный журнал Juvenis scientia</title>
 </head>
