@@ -1,6 +1,6 @@
 <?php
 
-$file = fopen("menu.txt", "r");
+$file = fopen(".htmenu", "r");
 if(!$file)
     throw new Exception('файл не существует');
 while (!feof($file)){
