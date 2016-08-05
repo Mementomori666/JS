@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Научный журнал Juvenis scientia - Главная</title>
+    <title><?//todo-Egor dynamic title?>Научный журнал Juvenis scientia - Главная</title>
     <meta name="description"
           content="Научный журнал. Публикация статей студентов, аспирантов и молодых ученых в области точных, естественных и гуманитарных наук.">
     <meta name="keywords" content="опубликовать научную статью, публикация аспирантов, научный журнал, публикация РИНЦ">
