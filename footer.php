@@ -1,7 +1,7 @@
 <div id="wb_Shape2">
     <div id="Shape2"></div></div>
 <div id="wb_Text3">
-    <span id="wb_uid24">2015-2016 © Издательство Социально-гуманитарное знание.<br>Научный журнал &quot;Juvenis scientia&quot;. ISSN 2414-3782.<br>Свидетельство о регистрации СМИ: ПИ № ФС 77 - 63856 от 27.11.2015</span></div>
+    <span id="wb_uid24">2015-2016 © Издательство Социально-гуманитарное знание.<br>qwНаучный журнал &quot;Juvenis scientia&quot;. ISSN 2414-3782.<br>Свидетельство о регистрации СМИ: ПИ № ФС 77 - 63856 от 27.11.2015</span></div>
 <div id="wb_Image3">
     <img src="images/Open Access.png" id="Image3" alt=""></div>
 <div id="wb_Text1">

@@ -8,8 +8,4 @@
 include_once 'DB.php';
 include 'header.php';
 include 'menu.php';
-include 'footer.php';
-
-/*$a = new DB('user', 'password');
-    if(!$connect = new PDO($a))
-        throw new PDOException();*/
+include 'footer.';
