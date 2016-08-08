@@ -8,6 +8,7 @@
 require_once 'classes/Autoload.php';
 include 'html/header.php';
 include 'html/menu.php';
+include 'html/content/menu.php';
 include 'html/footer.php';
 
 /*$a = new DB('user', 'password');
