@@ -9,9 +9,6 @@
 class SetMenuFromFile
 {
     public static function SetMenu($file){
-        $handle = fopen($file, "r");
-        while(!feof($handle)){
 
-        }
     }
 }

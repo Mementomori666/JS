@@ -1,13 +1,12 @@
-Главная;http://jscientia.org
-Новости;http://jscientia.org/posts
-О журнале;http://jscientia.org/about
-DOI;http://jscientia.org/doi
-Редакция;http://jscientia.org/editorial-board
-Выпуски журнала;http://jscientia.org/archive
-Опубликовать статью;http://jscientia.org/services
-Правила для авторов;http://jscientia.org/guide-for-authors
-Этика научных публикаций;http://jscientia.org/publication_ethics
-Порядок рассмотрения;http://jscientia.org/editorial-policies
-Условия оплаты;http://jscientia.org/payment
-Отзывы и комментарии;http://jscientia.org/comment
-Контактная информация;http://jscientia.org/contacts
+1;Главная;index;0;firstmain
+2;О журнале;about;0
+3;Архив;arch;0
+4;Редакция;editorial-board;0
+5;Авторам;#;0;withsubmenu
+6;Контакты;0;contacts
+
+1;Правила для авторов;guide-for-authors;5;firstitem
+2;Этика публикаций;publication_ethics;5
+3;Порядок рассмотрения;editorial-policies;5
+4;Условия оплаты;payment;5
+5;Опубликовать статью;services;5;lastitem

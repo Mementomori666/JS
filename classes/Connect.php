@@ -14,7 +14,7 @@ class Connect
 
     private function __construct(){
         try{
-            $this->link = new PDO('mysql:host=localhost;dbname=jscientia', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));
+            $this->link = new PDO('sqlite:jscientia.sql');
             $this->link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $e){
 
