@@ -22,8 +22,7 @@ class JSCSql
       }
       else {
          $this->link =new SQLite3(self::SQL_FILE);
-         $this->sql="
-                     CREATE TABLE Item_Menu (
+         $this->sql="CREATE TABLE Item_Menu (
                      id INTEGER PRIMARY KEY AUTOINCREMENT, 
                      name TEXT, 
                      href TEXT, 
