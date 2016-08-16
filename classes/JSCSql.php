@@ -35,7 +35,7 @@ class JSCSql
             function throwExept(){
                throw new Exception("error_pragma");
             }
-           // $this->link->query('PRAGMA encoding="UTF-8";') or throwExept() ;
+            $this->link->query('PRAGMA encoding="UTF-8";') or throwExept() ;
             $this->link->exec($this->sql);
          } catch (Exception $e){
             echo $this->link->lastErrorMsg();
@@ -68,8 +68,6 @@ class JSCSql
          $this->stmt->bindParam(':css_class', $css_class);
          $this->stmt->bindParam(':title', $title);
          $this->stmt->execute();
-            echo "<br/>";
-         var_dump($this->stmt);
          $this->stmt->close();
       }
          echo $this->sql;
