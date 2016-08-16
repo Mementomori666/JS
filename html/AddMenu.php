@@ -6,8 +6,12 @@
  * Time: 16:06
  */
 require_once '../classes/JSCSql.php';
+
 if ($_SERVER['REQUEST_METHOD']=='POST'){
    $jscientia = new JSCSql();
+   /**
+   * Добавления новых ссылок в БД в случаи необходимости
+    */
    if(isset($_POST['add'])){
       $addArr = array();
       $addArr['name'] = $_POST['name'];
@@ -18,6 +22,9 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
       $jscientia->SetLinks($addArr);
       
      }
+   /**
+   *Перенос данных из файла .htmenu в БД при нажатиии на кнопку создать
+    */
    if (isset($_POST['create'])){
       try {
          $sqlArr=array();
@@ -64,6 +71,9 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
    <button type="submit" name="create">Создать</button>
 </form>
 <?
+/**
+* Проверка успешного создания БД
+ */
    if (isset($_POST['check'])){
       $check=$jscientia->GetLinks();
      // foreach ()
