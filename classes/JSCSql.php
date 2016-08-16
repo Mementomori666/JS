@@ -15,6 +15,10 @@ class JSCSql
    private $link;
    private $stmt;
 
+   /**
+    * JSCSql constructor.
+    * Создает подключение к БД и если она отсутствует то создает и Саму БД
+    */
    function __construct()
    {
       if(is_file(self::SQL_FILE)){
@@ -48,7 +52,10 @@ class JSCSql
    {
       unset($this->link) ;
    }
-   
+
+   /**
+    * Метод принимает массив и добавляет его содержимое в БД
+    */
    function SetLinks ($arr=array()) {
 
       try{
@@ -74,6 +81,10 @@ class JSCSql
          echo $this->link->lastErrorMsg();
       }
    }
+
+   /**
+    * Метод возращает всё содержимое бд
+    */
    function GetLinks (){
       try{
          $this->sql="SELECT name, href, parrent_id, css_class, title
