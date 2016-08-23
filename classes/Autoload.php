@@ -1,6 +1,6 @@
 <?php
 spl_autoload_register ('autoload');
 function autoload ($className) {
-  $fileName = 'classes/'.$className . '.php';
+  $fileName = $className . '.php';
   include  $fileName;
 }

@@ -6,7 +6,6 @@
  * Time: 19:47
  */
 
-
 class JSCSql
 {
    const SQL_FILE = '../jscientia.sql';
@@ -19,7 +18,7 @@ class JSCSql
     * JSCSql constructor.
     * Создает подключение к БД и если она отсутствует то создает и Саму БД
     */
-   function __construct()
+   public function __construct()
    {
       if(is_file(self::SQL_FILE)){
          $this->link =new SQLite3(self::SQL_FILE);
@@ -48,7 +47,7 @@ class JSCSql
       }
 
    }
-   function __destruct()
+   public function __destruct()
    {
       unset($this->link) ;
    }
@@ -85,7 +84,7 @@ class JSCSql
    /**
     * Метод возращает всё содержимое бд
     */
-   function GetLinks (){
+   public function GetLinks (){
       try{
          $this->sql="SELECT name, href, parrent_id, css_class, title
                     FROM Item_Menu;";

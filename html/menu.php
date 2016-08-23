@@ -7,6 +7,7 @@
  *
  * Пока просто в html, чтобы посмотреть как выглядит и цепляется
  */
+var_dump(MainMenuInit::mainInit());
 ?>
 <div id="wb_Image1">
     <img src="../images/placeholder.gif" data-src="../images/logo2.png" data-src-retina="../images/logo2.png" id="Image1"

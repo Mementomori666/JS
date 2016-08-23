@@ -6,18 +6,17 @@
  * Date: 09.08.2016
  * Time: 17:26
  */
-class Menu
-{
+class Menu {
     private $menuItems = array();
 
-    public function __construct(array $menuItems){
+    public function __construct(array $menuItems) {
         $this->menuItems = $menuItems;
     }
 
-    public function getMenu(){
+    public function getMenu() {
         $outStr = "<ul>";
         foreach ($this->menuItems as $item) {
-            $outStr.= $item->getMenuItem();
+            $outStr .= $item->getMenuItem();
         }
         $outStr .= "</ul>";
         return $outStr;
