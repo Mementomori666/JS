@@ -6,7 +6,6 @@
  * Date: 28.05.2016
  * Time: 21:01
  */
-
 class Connect
 {
     static private $_instance = null;

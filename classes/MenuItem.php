@@ -13,13 +13,15 @@ class MenuItem
     private $href;
     private $parentid;
     private $liClass;
+    private $submenu;
 
-    public function __construct($id, $name, $href, $parentid = null, $liClass = null){
+    public function __construct($id, $name, $href, $parentid = null, $liClass = null, $submenu = null){
         $this->id = $id;
         $this->name = $name;
         $this->href = $href;
         $this->parentid = $parentid;
         $this->liClass = $liClass;
+        $this->submenu = $submenu;
     }
 
     public function getMenuItem(){

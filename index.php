@@ -14,7 +14,7 @@ include 'html/menu.php';
 include 'html/footer.php';
 
 
-
+MainMenuInit::mainInit();
 /*$a = new DB('user', 'password');
     if(!$connect = new PDO($a))
         throw new PDOException();*/

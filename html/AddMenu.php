@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
       $addArr = array();
       $addArr['name'] = $_POST['name'];
       $addArr['href']= $_POST['href'];
-      $addArr['parrent_id'] = $_POST['parrent_id'];
+      $addArr['parent_id'] = $_POST['parent_id'];
       $addArr['css_class'] = $_POST['css_class'];
       $addArr['title'] = $_POST['title'];
       $jscientia->SetLinks($addArr);
@@ -36,10 +36,10 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
 
          foreach ($arrLink as $index) {
             
-               list($id, $name, $href, $parrent_id, $css_class) = explode(';', $index);
+               list($id, $name, $href, $parent_id, $css_class) = explode(';', $index);
                $resArr['name'] = $name;
                $resArr['href'] = $href;
-               $resArr['parrent_id'] = $parrent_id;
+               $resArr['parent_id'] = $parent_id;
                $resArr['css_class'] = $css_class;
                $resArr['title'] = $name;
                $sqlArr[] = $resArr;
@@ -59,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
    <label>name</label><br/>
    <input type="text" name="href">
    <label>href</label><br/>
-   <input type="text" name="parrent_id">
-   <label>parrent_id</label><br/>
+   <input type="text" name="parent_id">
+   <label>parent_id</label><br/>
    <input type="text" name="css_class">
    <label>css_class</label><br/>
    <input type="text" name="title">
