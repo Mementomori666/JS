@@ -257,6 +257,3 @@
 </head>
 <body>
 <div id="container">
-    <div id="wb_Shape1">
-        <div id="Shape1"></div>
-    </div>

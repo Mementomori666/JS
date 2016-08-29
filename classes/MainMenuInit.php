@@ -8,11 +8,9 @@
  */
 class MainMenuInit {
     public static function mainInit() {
-        $link = \Connect::getInstance()->getLink();
+        $link = Connect::getInstance()->getLink();
         $query = '';
-        $menuItem = array();
         $submenus = array();
-        $menuInStr = '';
         try {
             $query = "SELECT id, name, href, parent_id, css_class, title FROM Item_Menu;";
         } catch (Exception $e) {
@@ -39,9 +37,6 @@ class MainMenuInit {
             $submenus[$id] = new Menu($menuItem);
         }
         $menu = $submenus[0];
-//        echo '<pre>';
-//        print_r($menu);
-//        echo '</pre>';
         return $menu->getMenu();
     }
 }
