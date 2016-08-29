@@ -13,9 +13,9 @@ class MenuItem
     private $href;
     private $parentid;
     private $liClass;
-    private $submenu;
+    private $submenu = null;
 
-    public function __construct($id, $name, $href, $parentid = null, $liClass = null, $submenu = null){
+    public function __construct($id, $name, $href, $parentid = null, $liClass = null, Menu $submenu = null){
         $this->id = $id;
         $this->name = $name;
         $this->href = $href;
@@ -28,10 +28,11 @@ class MenuItem
         $outStr = "";
         $outStr .= "<li";
         if($this->liClass != null) $outStr.=" class = '$this->liClass'";
-        $outStr .= "><a class='active' href='$_SERVER[PHP_SELF]/$this->href.php' target='_self'>
+        $outStr .= "><a href='/$this->href.php' target='_self'>
 $this->name</a>";
-        if($this->liClass == "withsubmenu") {
+        if(strstr($this->liClass, 'withsubmenu')) {
             //блок добавления подменю
+            $outStr .= $this->submenu->getMenu();
         }
         $outStr.="</li>";
         return $outStr;

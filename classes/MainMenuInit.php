@@ -29,12 +29,12 @@ class MainMenuInit {
         foreach($parentIds as $id){
             $menuItem = array();
             foreach ($structuredMenu[$id] as $item) {
+                unset($submenu);
                 $submenu = null;
                 if(array_key_exists($item['id'], $submenus)){
                     $submenu = $submenus[$item['id']];
                 }
                 $menuItem[$id][] = new MenuItem($item['id'], $item['name'], $item['href'], $item['parent_id'], $item['css_class'], $submenu);
-
             }
             $submenus[$id] = new Menu($menuItem);
         }
@@ -42,6 +42,6 @@ class MainMenuInit {
 //        echo '<pre>';
 //        print_r($menu);
 //        echo '</pre>';
-        //return $menu->getMenu();
+        return $menu->getMenu();
     }
 }

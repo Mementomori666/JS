@@ -10,12 +10,13 @@ class Menu {
     private $menuItems = array();
 
     public function __construct(array $menuItems) {
-        $this->menuItems = $menuItems;
+        $this->menuItems = array_pop($menuItems);
     }
 
     public function getMenu() {
         $outStr = "<ul>";
         foreach ($this->menuItems as $item) {
+            //var_dump($item);
             $outStr .= $item->getMenuItem();
         }
         $outStr .= "</ul>";
