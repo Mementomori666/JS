@@ -39,7 +39,7 @@ class JSCSql {
                 $this->link->exec($this->sql);
             } catch (Exception $e) {
                 echo $this->link->lastErrorMsg();
-                echo $e;
+                echo $e->getMessage();
             }
 
         }
@@ -98,7 +98,7 @@ class JSCSql {
                 throw (new Exception ('not_array'));
             }
         } catch (Exception $e) {
-            echo $e;
+            echo $e->getMessage();
             echo $this->link->lastErrorMsg();
         }
     }
