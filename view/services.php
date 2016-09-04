@@ -87,9 +87,9 @@
             </form>
         </div>
         <div id="wb_Image2">
-            <a href="./files/JS_example_ru.doc"><img src="images/img0052.png" id="Image2" alt=""></a></div>
+            <a href="./files/JS_example_ru.doc"><img src="../images/img0052.png" id="Image2" alt=""></a></div>
         <div id="wb_Image3">
-            <a href="./files/JS_info_ru.doc"><img src="images/img0013.png" id="Image3" alt=""></a></div>
+            <a href="./files/JS_info_ru.doc"><img src="../images/img0013.png" id="Image3" alt=""></a></div>
         <div id="wb_Text6">
             <span id="wb_uid6"><a href="./files/JS_example_ru.doc">Пример оформления статьи</a></span></div>
         <div id="wb_Text7">

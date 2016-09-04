@@ -28,7 +28,7 @@ class MenuItem
         $outStr = "";
         $outStr .= "<li";
         if($this->liClass != null) $outStr.=" class = '$this->liClass'";
-        $outStr .= "><a href='/$this->href.php' target='_self'>
+        $outStr .= "><a href='/page/$this->href' target='_self'>
 $this->name</a>";
         if(strstr($this->liClass, 'withsubmenu')) {
             //блок добавления подменю
