@@ -25,15 +25,15 @@
             </tr>
         </table>
         <div id="wb_Image3">
-            <a href="./payok.html"><img src="images/cover.png" id="Image3" alt=""></a></div>
+            <a href="./payok.html"><img src="../images/cover.png" id="Image3" alt=""></a></div>
         <div id="wb_Image4">
-            <a href="./archive/2016/1.html"><img src="images/cover.png" id="Image4" alt=""></a></div>
+            <a href="./archive/2016/1.html"><img src="../images/cover.png" id="Image4" alt=""></a></div>
         <div id="wb_Image5">
-            <a href="./archive/2016/2.html"><img src="images/cover.png" id="Image5" alt=""></a></div>
+            <a href="./archive/2016/2.html"><img src="../images/cover.png" id="Image5" alt=""></a></div>
         <div id="wb_Image6">
-            <a href="./archive/2016/3.html"><img src="images/cover.png" id="Image6" alt=""></a></div>
+            <a href="./archive/2016/3.html"><img src="../images/cover.png" id="Image6" alt=""></a></div>
         <div id="wb_Image7">
-            <a href="./archive/2016/4.html"><img src="images/cover.png" id="Image7" alt=""></a></div>
+            <a href="./archive/2016/4.html"><img src="../images/cover.png" id="Image7" alt=""></a></div>
         <div id="wb_Text2">
             <span id="wb_uid15"><strong>Архив выпусков журнала</strong></span></div>
     </div>
