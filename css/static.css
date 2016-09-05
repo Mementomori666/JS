@@ -8,7 +8,7 @@ div#container
 body
 {
    background-color: #FFFFFF;
-   background-image: url(images/fon.png);
+   background-image: url(/images/fon.png);
    background-attachment: fixed;
    background-position: center center;
    background-repeat: repeat;

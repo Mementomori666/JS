@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 $controller = 'PageController';
 $action = 'actionIndex';
-$containerStyle = '';
+$containerStyle = 'index';
 $params = array();
 
 if ($_SERVER['REQUEST_URI'] != '/') {
