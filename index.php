@@ -1,12 +1,10 @@
 <?php
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
-require_once 'classes/Autoload.php';
-include 'html/header.php';
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 $controller = 'PageController';
 $action = 'actionIndex';
-
+$containerStyle = '';
 $params = array();
 
 if ($_SERVER['REQUEST_URI'] != '/') {
@@ -16,6 +14,7 @@ if ($_SERVER['REQUEST_URI'] != '/') {
     $controller = ucfirst(array_shift($uriParts)) . "Controller";
     if (count($uriParts) > 0) {
         $action = array_shift($uriParts);
+        $containerStyle = $action;
         $actionArray = explode('-', $action);
         foreach($actionArray as $item) $item = ucfirst($item);
         $action = implode('', $actionArray);
@@ -26,9 +25,13 @@ if ($_SERVER['REQUEST_URI'] != '/') {
         $params[$uriParts[$i]] = $uriParts[++$i];
     }
 }
+require_once 'classes/Autoload.php';
+include 'html/header.php';
 
 try {
+    if(!class_exists($controller, true)) throw new Exception();
     $controllerClass = new $controller();
+    if(!method_exists($controllerClass, $action)) throw new Exception();
     $controllerClass->$action($params);
 } catch (Exception $e) {
     $controller = 'PageController';

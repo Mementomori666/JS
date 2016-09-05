@@ -6,12 +6,13 @@
     <meta name="description"
           content="Научный журнал. Публикация статей студентов, аспирантов и молодых ученых в области точных, естественных и гуманитарных наук.">
     <meta name="keywords" content="опубликовать научную статью, публикация аспирантов, научный журнал, публикация РИНЦ">
-    <link href="../images/ico.ico" rel="shortcut icon" type="image/x-icon">
-    <link href="../css/28.07.css" rel="stylesheet">
-    <link href="../css/index.css" rel="stylesheet">
-    <script src="../js/jquery-1.11.3.min.js"></script>
-    <script src="../js/wb.lazyload.min.js"></script>
-    <script src="../js/searchindex.js"></script>
+    <link href="/images/ico.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="/css/28.07.css" rel="stylesheet">
+    <link href="/css/static.css" rel="stylesheet">
+    <link href="/css/<?= $containerStyle ?>.css" rel="stylesheet">
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/js/wb.lazyload.min.js"></script>
+    <script src="/js/searchindex.js"></script>
     <script>
         var features = 'toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes,status=yes,left=,top=,width=,height=';
         var searchDatabase = new SearchDatabase();
