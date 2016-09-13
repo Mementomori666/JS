@@ -465,3 +465,27 @@ body
 {
    color: #00A0E4;
 }
+#Layer1
+{
+   background-color: #FFFFFF;
+   background-image: none;
+   border: 1px transparent solid;
+}
+#Layer1
+{
+   position: absolute;
+   text-align: center;
+   left: 0px;
+   top: 210px;
+   width: 992px;
+   height: 1106px;
+   z-index: 16;
+}
+#Layer1_Container
+{
+   width: 992px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: left;
+}

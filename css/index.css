@@ -1,10 +1,4 @@
-#Layer1
-{
-   background-color: #FFFFFF;
-   background-image: none;
-   border: 1px transparent solid;
-}
-#wb_Text2 
+#wb_Text2
 {
    background-color: transparent;
    background-image: none;
@@ -388,16 +382,6 @@
    height: 51px;
    z-index: 2;
 }
-#Layer1
-{
-   position: absolute;
-   text-align: center;
-   left: 0px;
-   top: 210px;
-   width: 992px;
-   height: 1106px;
-   z-index: 16;
-}
 #wb_uid6
 {
    color: #000000;
@@ -417,14 +401,6 @@
 #wb_uid7
 {
    background-image: url($FILENAME$);
-}
-#Layer1_Container
-{
-   width: 992px;
-   position: relative;
-   margin-left: auto;
-   margin-right: auto;
-   text-align: left;
 }
 #wb_uid20
 {
