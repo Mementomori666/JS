@@ -1,20 +1,18 @@
 <?php
 $root_dir = 'jscientia';
-define ('ROOT_DIR', explode($root_dir, __DIR__)[0].$root_dir.'/');
 define('DS', DIRECTORY_SEPARATOR);
+define ('ROOT_DIR', explode($root_dir, __DIR__)[0].$root_dir.DS);
+
 
 spl_autoload_extensions('.php');
 spl_autoload_register('loadClasses');
 
 function loadClasses($className) {
-    if (file_exists(ROOT_DIR . DS . 'controller/' . $className . '.php')) {
-        set_include_path(ROOT_DIR . DS . 'controller' . DS);
-        spl_autoload($className);
-    } elseif (file_exists('model/' . $className . '.php')) {
-        set_include_path(ROOT_DIR . DS . 'model' . DS);
-        spl_autoload($className);
+    if (file_exists(ROOT_DIR  . 'controller'. DS . $className . '.php')) {
+        require_once ROOT_DIR . 'controller' . DS. $className . '.php';
+    } elseif (file_exists('model' . $className . '.php')) {
+        require_once ROOT_DIR  . 'model' . DS . $className . '.php';
     } else {
-        set_include_path(ROOT_DIR . DS . 'classes' . DS);
-        spl_autoload($className);
+        require_once ROOT_DIR . 'classes' . DS . $className . '.php';
     }
 }
