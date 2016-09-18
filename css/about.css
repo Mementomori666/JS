@@ -1,0 +1,42 @@
+div#container
+{
+    width: 994px;
+    position: relative;
+    margin: 0 auto 0 auto;
+    text-align: left;
+}
+#wb_Text2
+{
+    background-color: transparent;
+    background-image: none;
+    border: 0px #000000 solid;
+    padding: 0;
+    margin: 0;
+    text-align: justify;
+}
+#wb_Text2 div
+{
+    text-align: justify;
+}
+#wb_uid0
+{
+    color: #00A0E4;
+    font-family: Tahoma;
+    font-size: 20px;
+}
+#wb_uid2
+{
+    color: #000000;
+    font-family: Tahoma;
+    font-size: 15px;
+}
+#wb_Text2
+{
+    position: absolute;
+    left: 45px;
+    top: 33px;
+    width: 900px;
+    height: 922px;
+    text-align: justify;
+    z-index: 0;
+}
