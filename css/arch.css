@@ -86,7 +86,7 @@ div#container
     text-align: justify;
     z-index: 6;
 }
-#wb_Image3
+#wb_Image8
 {
     position: absolute;
     left: 148px;
@@ -95,7 +95,7 @@ div#container
     height: 142px;
     z-index: 1;
 }
-#wb_Image4
+#wb_Image9
 {
     position: absolute;
     left: 147px;
@@ -131,7 +131,7 @@ div#container
     height: 142px;
     z-index: 5;
 }
-#Image3
+#Image8
 {
     border: 0px #000000 solid;
     padding: 0px 0px 0px 0px;
@@ -140,7 +140,7 @@ div#container
     width: 100%;
     height: 100%;
 }
-#Image4
+#Image9
 {
     border: 0px #000000 solid;
     padding: 0px 0px 0px 0px;

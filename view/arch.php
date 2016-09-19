@@ -24,9 +24,9 @@
                 <td class="cell2"><span id="wb_uid14"> </span></td>
             </tr>
         </table>
-        <div id="wb_Image3">
+        <div id="wb_Image8">
             <a href="./payok.html"><img src="../images/cover.png" id="Image3" alt=""></a></div>
-        <div id="wb_Image4">
+        <div id="wb_Image9">
             <a href="./archive/2016/1.html"><img src="../images/cover.png" id="Image4" alt=""></a></div>
         <div id="wb_Image5">
             <a href="./archive/2016/2.html"><img src="../images/cover.png" id="Image5" alt=""></a></div>

@@ -34,7 +34,7 @@ class PageController{
     }
 
     public function actionPublicationEthics(){
-        View::render('publication_ethics');
+        View::render('publication-ethics');
     }
 
     public function actionServices(){
