@@ -89,7 +89,7 @@
                 <td class="cell3"><span id="wb_uid24"><strong>Сунагатуллина Алиса Шамилевна</strong>, кандидат химических наук<br>Уфимский государственный нефтяной технический университет (г. Уфа)</span>
                 </td>
                 <td class="cell4">&nbsp;</td>
-                <td class="cell5"><span id="wb_uid25"> </span></td>
+                <td class="cell5"><span id="wb_uid26"> </span></td>
             </tr>
         </table>
     </div>

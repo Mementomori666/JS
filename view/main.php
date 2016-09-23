@@ -10,30 +10,30 @@
                     педагогика, психология, история, правоведение, физическая культура и спорт, архитектура и
                     строительство.</em></span></div>
         <div id="wb_Image15">
-            <a href="./doi.html"><img src="images/12.png" id="Image15" alt=""></a></div>
+            <a href="./doi.html"><img src="/images/12.png" id="Image15" alt=""></a></div>
         <div id="wb_Image14">
-            <a href="./openaccess.html"><img src="images/11.png" id="Image14" alt=""></a></div>
+            <a href="./openaccess.html"><img src="/images/11.png" id="Image14" alt=""></a></div>
         <div id="wb_Image9">
-            <img src="images/06.png" id="Image9" alt=""></div>
+            <img src="/images/06.png" id="Image9" alt=""></div>
         <div id="wb_Image7">
             <a href="https://dbh.nsd.uib.no/publiseringskanaler/erihplus/periodical/info.action?id=488120"><img
-                    src="images/04.png" id="Image7" alt=""></a></div>
+                    src="/images/04.png" id="Image7" alt=""></a></div>
         <div id="wb_Image10">
-            <a href="http://elibrary.ru/title_about.asp?id=56958"><img src="images/07.png" id="Image10" alt=""></a>
+            <a href="http://elibrary.ru/title_about.asp?id=56958"><img src="/images/07.png" id="Image10" alt=""></a>
         </div>
         <div id="wb_Image5">
             <a href="https://scholar.google.ru/scholar?as_q=&as_epq=&as_oq=&as_eq=&as_occt=any&as_sauthors=&as_publication=juvenis+scientia&as_ylo=&as_yhi=&btnG=&hl=ru&as_sdt=0%2C5"><img
-                    src="images/02.png" id="Image5" alt=""></a></div>
+                    src="/images/02.png" id="Image5" alt=""></a></div>
         <div id="wb_Image11">
-            <a href="http://cyberleninka.ru/journal/n/juvenis-scientia"><img src="images/08.png" id="Image11"
+            <a href="http://cyberleninka.ru/journal/n/juvenis-scientia"><img src="/images/08.png" id="Image11"
                                                                              alt=""></a></div>
         <div id="wb_Image12">
-            <img src="images/09.png" id="Image12" alt=""></div>
+            <img src="/images/09.png" id="Image12" alt=""></div>
         <div id="wb_Image8">
             <a href="https://www.worldcat.org/search?q=so%3AJuvenis+scientia&qt=advanced&dblist=638"><img
-                    src="images/05.png" id="Image8" alt=""></a></div>
+                    src="/images/05.png" id="Image8" alt=""></a></div>
         <div id="wb_Image6">
-            <img src="images/03.png" id="Image6" alt=""></div>
+            <img src="/images/03.png" id="Image6" alt=""></div>
         <div id="Blog1">
             <div class="blogitem">
                 <div class="blogtable">
@@ -190,7 +190,7 @@ Directory of Open Access Journals (DOAJ) – это директория, пре
         <div id="wb_Text4">
             <span id="wb_uid23"><strong>Новости:</strong></span></div>
         <div id="wb_Image2">
-            <img src="images/cover.png" id="Image2" alt=""></div>
+            <img src="/images/cover.png" id="Image2" alt=""></div>
         <div id="wb_CssMenu3">
             <ul>
                 <li class="firstmain"><a href="./archive/2016/4.html" target="_self"
@@ -201,7 +201,7 @@ Directory of Open Access Journals (DOAJ) – это директория, пре
                        title="&#1050;&#1059;&#1055;&#1048;&#1058;&#1068; &#1046;&#1059;&#1056;&#1053;&#1040;&#1051;">
                         &#1050;&#1059;&#1055;&#1048;&#1058;&#1068;&nbsp;&#1046;&#1059;&#1056;&#1053;&#1040;&#1051;</a>
                 </li>
-                <li><a href="services.php" target="_self"
+                <li><a href="services" target="_self"
                        title="&#1054;&#1055;&#1059;&#1041;&#1051;&#1048;&#1050;&#1054;&#1042;&#1040;&#1058;&#1068; &#1057;&#1058;&#1040;&#1058;&#1068;&#1070;">
                         &#1054;&#1055;&#1059;&#1041;&#1051;&#1048;&#1050;&#1054;&#1042;&#1040;&#1058;&#1068;&nbsp;&#1057;&#1058;&#1040;&#1058;&#1068;&#1070;</a>
                 </li>
