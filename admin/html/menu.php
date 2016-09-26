@@ -8,18 +8,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" href="#"><div class="row"><img src="../images/logo2.png" alt="Logo" class="col-md-2"></div></a>
+         <img src="../../images/logo2.png" alt="Logo" class="col-md-2"></div>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <?$page = $_GET['page'];
+      <?$page = $_SERVER['REQUEST_URI'];
       $page=strip_tags(trim($page));
       if ($page=="addArticle"){
       ?>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          <ul class="nav navbar-nav">
-            <li class="active"><a href="?page=addArticle">Добавление Статей</a></li>
-            <li ><a href="?page=adduser">Добавление Пользователей</a></li>
+            <li class="active"><a href="../admin/addArticle">Добавление Статей</a></li>
+            <li ><a href="/admin/addUser">Добавление Пользователей</a></li>
 
          </ul>
          <?
@@ -28,8 +28,8 @@
          ?>
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-               <li ><a href="?page=addArticle">Добавление Статей</a></li>
-               <li class="active"><a href="?page=adduser">Добавление Пользователей</a></li>
+               <li ><a href="/admin/addArticle">Добавление Статей</a></li>
+               <li class="active"><a href="/admin/adduser">Добавление Пользователей</a></li>
 
             </ul>
             <?

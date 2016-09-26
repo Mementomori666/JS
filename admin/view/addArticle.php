@@ -17,7 +17,7 @@
 ?>
 <div class="container">
    <form name="Форма_размещения_статьи" class="form-horizontal" role="form" method="post"
-         action="index.php">
+         action="../index.php">
        <div class="form-group">
              <label for="pub_year" class="col-md-2 control-label">Год выпуска:</label>
           <div class="col-md-6">
@@ -98,5 +98,3 @@
 
    </form>
 </div>
-</body>
-</html>

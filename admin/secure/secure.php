@@ -6,7 +6,7 @@
  * Time: 15:44
  */
 
-define("FILE_NAME", "../admin/secure/.htpasswd");
+define("FILE_NAME", ".htpasswd");
 
 function getHash($string, $salt, $iteration_count){
     for($i=0; $i< $iteration_count; $i++){
