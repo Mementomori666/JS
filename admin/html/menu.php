@@ -18,8 +18,8 @@
       ?>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          <ul class="nav navbar-nav">
-            <li class="active"><a href="../admin/addArticle">Добавление Статей</a></li>
-            <li ><a href="/admin/addUser">Добавление Пользователей</a></li>
+            <li class="active"><a href="/page/add-article">Добавление Статей</a></li>
+            <li ><a href="/page/add-user">Добавление Пользователей</a></li>
 
          </ul>
          <?
@@ -28,8 +28,8 @@
          ?>
          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-               <li ><a href="/admin/addArticle">Добавление Статей</a></li>
-               <li class="active"><a href="/admin/adduser">Добавление Пользователей</a></li>
+               <li ><a href="/admin/page/add-article">Добавление Статей</a></li>
+               <li class="active"><a href="/admin/page/add-user">Добавление Пользователей</a></li>
 
             </ul>
             <?

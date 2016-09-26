@@ -43,4 +43,8 @@ class PageController{
     public function actionNotFound(){
         View::render('not-found');
     }
+
+    public function actionPayok(){
+        View::render('payok');
+    }
 }

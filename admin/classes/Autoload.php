@@ -1,7 +1,7 @@
 <?php
-$root_dir = 'JS.local';
+$root_dir = 'admin';
 define('DS', DIRECTORY_SEPARATOR);
-define ('ROOT_DIR', explode($root_dir, __DIR__)[0].$root_dir.DS.'admin'.DS);
+define ('ROOT_DIR', explode($root_dir, __DIR__)[0].$root_dir.DS);
 
 
 spl_autoload_extensions('.php');

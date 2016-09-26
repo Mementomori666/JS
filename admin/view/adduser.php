@@ -6,7 +6,7 @@
  * Time: 0:42
  */
 Header("Content-Type: text/html;charset=UTF-8");
-require_once "../secure/secure.php";
+require_once "secure/secure.php";
 $user = "";
 $string = "";
 $salt = "";

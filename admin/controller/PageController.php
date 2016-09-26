@@ -1,5 +1,5 @@
 <?php
-class AdminController{
+class PageController{
     public function actionAddArticle(){
         ViewAdmin::render('addArticle');
         return true;

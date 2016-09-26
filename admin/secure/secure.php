@@ -6,7 +6,7 @@
  * Time: 15:44
  */
 
-define("FILE_NAME", ".htpasswd");
+define("FILE_NAME", "../secure/.htpasswd");
 
 function getHash($string, $salt, $iteration_count){
     for($i=0; $i< $iteration_count; $i++){
@@ -29,8 +29,10 @@ function userExists($login){
     }
     $users = file(FILE_NAME);
     foreach($users as $user){
-        if(strpos($user, $login) !== false)
+        if(strpos($user, $login) !== false){
             return $user;
+        }
+
     }
     return false;
 }

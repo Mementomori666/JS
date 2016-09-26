@@ -11,9 +11,9 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
 header('Content-type: text/html; charset=utf-8');
 header("Expires: " . date("r"));
 header("HTTP/1.0 401 Unauthorized");
-require_once("../admin/secure/secure.php");
+require_once("../secure/secure.php");
 
-include "../admin/secure/form.html";
+include "../secure/form.html";
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $ref = strip_tags(trim($_GET['ref']));
     $user = strip_tags(trim($_POST['login']));
@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     else echo "Заполните все поля!";
 }
-include "../admin/secure/form_end.html";
+include "../secure/form_end.html";
 
 
 
