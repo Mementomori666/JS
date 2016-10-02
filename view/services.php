@@ -12,9 +12,9 @@
                     регистрационного номера статьи в теме письма.</strong><br><br></span><span id="wb_uid3"><strong>Статьи,
                     оформленные с нарушением настоящих требований, редакцией не рассматриваются.</strong></span></div>
         <div id="wb_Form1">
-            <form name="Форма_подачи_статьи" method="post" action="<?php echo basename(__FILE__); ?>"
+            <form name="Форма_подачи_статьи" method="post" action="/page/services"
                   enctype="multipart/form-data" accept-charset="UTF-8" id="Form1"
-                  onsubmit="return ValidateФорма_подачи_статьи(this)">
+                >
                 <input type="hidden" name="formid" value="form1">
                 <input type="text" id="FIO" name="ФИО" value="" tabindex="2" required>
                 <label for="FIO" id="Label1" tabindex="1">Ф.И.О. автора, ответственного за переписку:</label>

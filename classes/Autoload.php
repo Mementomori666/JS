@@ -1,9 +1,4 @@
 <?php
-$root_dir = 'jscientia';
-define('DS', DIRECTORY_SEPARATOR);
-define ('ROOT_DIR', explode($root_dir, __DIR__)[0].$root_dir.DS);
-
-
 spl_autoload_extensions('.php');
 spl_autoload_register('loadClasses');
 

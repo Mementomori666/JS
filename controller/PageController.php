@@ -38,6 +38,24 @@ class PageController{
     }
 
     public function actionServices(){
+        if($_SERVER['REQUEST_METHOD']=='POST'){
+            var_dump($_POST);
+            var_dump($_FILES);
+            $mailer = new JPhpMailer();
+            $mailer->Subject = 'test';
+            $mailer->Body = 'test';
+            $mailer->AddAddress('drilnmain@gmail.com');
+            if(!$mailer->Send())
+            {
+                echo 'Не могу отослать письмо!';
+            }
+            else
+            {
+                echo 'Письмо отослано!';
+            }
+            $mailer->ClearAddresses();
+            $mailer->ClearAttachments();
+        }
         View::render('services');
     }
     public function actionNotFound(){
