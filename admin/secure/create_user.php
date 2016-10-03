@@ -6,7 +6,7 @@
  * Time: 16:14
  */
 Header("Content-Type: text/html;charset=UTF-8");
-//require_once "session.php";
+require_once "session.php";
 require_once "secure.php";
 ?>
 

@@ -37,6 +37,14 @@ class PageController{
         View::render('publication-ethics');
     }
 
+    public function actionArticleLoadOk(){
+        View::render('article-load-ok');
+    }
+
+    public function actionArticleLoadError(){
+        View::render('article-load-error');
+    }
+
     public function actionServices(){
         if($_SERVER['REQUEST_METHOD']=='POST'){
             var_dump($_POST);
@@ -64,5 +72,17 @@ class PageController{
 
     public function actionPayok(){
         View::render('payok');
+    }
+
+    public function actionDoi(){
+        View::render('doi');
+    }
+
+    public function actionOpenAccess(){
+        View::render('open-access');
+    }
+
+    public function actionAffiliate(){
+        View::render('affiliate');
     }
 }
