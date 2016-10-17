@@ -88,7 +88,7 @@
             <input type="file" id="article" class="form-control" name="article" required>
          </div>
       </div><div class="form-group">
-         <label for="article_prev" class="col-md-2 control-label">Загрузить статью:</label>
+         <label for="article_prev" class="col-md-2 control-label">Загрузить превью статьи:</label>
          <div class="col-md-6">
             <input type="file" id="article_prev" class="form-control" name="article_prev" required>
          </div>
