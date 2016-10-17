@@ -41,5 +41,6 @@ class JPhpMailer extends PHPMailer
             $this->Sender = $site['from_email'];
         }
         $this->Priority = $this->priority;
+        $this->CharSet = 'UTF-8';
     }
 }

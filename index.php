@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+ob_start();
 require_once 'config.php';
 
 $controller = 'PageController';
@@ -43,3 +44,4 @@ try {
 
 include 'html/menu.php';
 include 'html/footer.php';
+ob_end_flush();

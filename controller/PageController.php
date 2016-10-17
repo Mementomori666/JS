@@ -46,14 +46,37 @@ class PageController{
     }
 
     public function actionServices(){
-        if($_SERVER['REQUEST_METHOD']=='POST'){
-            var_dump($_POST);
-            var_dump($_FILES);
-            $mailer = new JPhpMailer();
-            $mailer->Subject = 'test';
-            $mailer->Body = 'test';
-            $mailer->AddAddress('drilnmain@gmail.com');
-            if(!$mailer->Send())
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $paramsForAuthor['fio'] = $paramsForAdmin['fio'] = htmlspecialchars(trim($_POST['fio']));
+            $paramsForAuthor['article_name'] = $paramsForAdmin['article_name']
+                = htmlspecialchars(trim($_POST['article_name']));
+            $paramsForAdmin['email'] = htmlspecialchars(trim($_POST['email']));
+            $paramsForAdmin['phone'] = htmlspecialchars(trim($_POST['phone']));
+            $paramsForAdmin['section'] = htmlspecialchars(trim($_POST['section']));
+            $paramsForAdmin['language'] = htmlspecialchars(trim($_POST['language']));
+            if(isset($_POST['message'])) $paramsForAdmin['message'] = htmlspecialchars(trim($_POST['message']));
+            if(isset($_POST['doi'])) $paramsForAdmin['doi'] = htmlspecialchars(trim($_POST['doi']));
+            if(isset($_POST['eSertificate']))
+                $paramsForAdmin['eSertificate'] = htmlspecialchars(trim($_POST['eSertificate']));
+            if(isset($_POST['pSertificate']))
+                $paramsForAdmin['pSertificate'] = htmlspecialchars(trim($_POST['pSertificate']));
+            if(isset($_POST['journal'])) $paramsForAdmin['journal'] = htmlspecialchars(trim($_POST['journal']));
+
+            $mailToAdmin = new JPhpMailer();
+            $mailToAdmin->Subject = 'На публикацию поступила новая статья в журнал jscientia';
+            $mailToAdmin->Body = View::renderPhpFile('mail_service_to_admin', $paramsForAdmin);
+            $mailToAdmin->AddAddress(ADMIN_MALE);
+            if (isset($_FILES['info']) &&
+                $_FILES['info']['error'] == UPLOAD_ERR_OK) {
+                $mailToAdmin->AddAttachment($_FILES['info']['tmp_name'],
+                    $_FILES['info']['name']);
+            }
+            if (isset($_FILES['article']) &&
+                $_FILES['article']['error'] == UPLOAD_ERR_OK) {
+                $mailToAdmin->AddAttachment($_FILES['article']['tmp_name'],
+                    $_FILES['article']['name']);
+            }
+            if(!$mailToAdmin->Send())
             {
                 echo 'Не могу отослать письмо!';
             }
@@ -61,8 +84,23 @@ class PageController{
             {
                 echo 'Письмо отослано!';
             }
-            $mailer->ClearAddresses();
-            $mailer->ClearAttachments();
+            $mailToAdmin->ClearAddresses();
+            $mailToAdmin->ClearAttachments();
+
+            $mailToAuthor = new JPhpMailer();
+            $mailToAuthor->Subject = 'Статья получена редакцией';
+            $mailToAuthor->Body = View::renderPhpFile('mail_service_to_author', $paramsForAuthor);
+            $mailToAuthor->AddAddress(htmlspecialchars(trim($_POST['email'])));
+            if(!$mailToAuthor->Send())
+            {
+                echo 'Не могу отослать письмо!';
+            }
+            else
+            {
+                echo 'Письмо отослано!';
+            }
+            $mailToAuthor->ClearAddresses();
+            $mailToAuthor->ClearAttachments();
         }
         View::render('services');
     }

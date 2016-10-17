@@ -16,13 +16,13 @@
                   enctype="multipart/form-data" accept-charset="UTF-8" id="Form1"
                 >
                 <input type="hidden" name="formid" value="form1">
-                <input type="text" id="fio" name="ФИО" value="" tabindex="2" required>
+                <input type="text" id="FIO" name="fio" value="" tabindex="2" required>
                 <label for="FIO" id="Label1" tabindex="1">Ф.И.О. автора, ответственного за переписку:</label>
                 <label for="EMAIL" id="Label2">Действующий адрес электронной почты:</label>
-                <input type="email" id="EMAIL" name="EMAIL" value="">
-                <input type="text" id="TEL" name="TEL" value="+7" required>
-                <input type="text" id="ARTICLE_NAME" name="ARTICLE_NAME" value="">
-                <select name="SECTION" size="1" id="SECTION">
+                <input type="email" id="EMAIL" name="email" value="">
+                <input type="text" id="TEL" name="phone" value="+7" required>
+                <input type="text" id="ARTICLE_NAME" name="article_name" value="">
+                <select name="section" size="1" id="SECTION">
                     <option value="Математика">Математика</option>
                     <option value="Механика">Механика</option>
                     <option value="Информатика">Информатика</option>
@@ -49,13 +49,13 @@
                     <option>Правоведение</option>
                     <option>Физическая культура и спорт</option>
                 </select>
-                <select name="LANG" size="1" id="LANG">
+                <select name="language" size="1" id="LANG">
                     <option value="Русский">Русский</option>
                     <option value="Английский">Английский</option>
                 </select>
-                <input type="file" id="ARTICLE" name="ARTICLE" required>
-                <input type="file" id="INFO" name="INFO" required>
-                <textarea name="MESAGE" id="MESAGE" rows="4" cols="90"></textarea>
+                <input type="file" id="ARTICLE" name="article" required>
+                <input type="file" id="INFO" name="info" required>
+                <textarea name="message" id="MESAGE" rows="4" cols="90"></textarea>
                 <input type="submit" id="Button1" name="Отправить" value="Отправить">
                 <input type="checkbox" id="label99" name="1" value="on">
                 <label for="label99" id="Label3">Материалы не направлены в другие журналы и публикуются впервые</label>
@@ -65,10 +65,10 @@
                 <label for="DOI" id="Label5">Присвоить DOI (digital object identifier)</label>
                 <label for="pSERTIFICATE" id="label44">Печатный сертификат о публикации</label>
                 <label for="JOURNAL" id="Label8">Печатный экземпляр журнала</label>
-                <input type="checkbox" id="DOI" name="DOI" value="on">
-                <input type="checkbox" id="pSERTIFICATE" name="pSERTIFICATE" value="on">
-                <input type="checkbox" id="eSERTIFICATE" name="eSERTIFICATE" value="on">
-                <input type="checkbox" id="JOURNAL" name="JOURNAL" value="on">
+                <input type="checkbox" id="DOI" name="doi" value="on">
+                <input type="checkbox" id="pSERTIFICATE" name="pSertificate" value="on">
+                <input type="checkbox" id="eSERTIFICATE" name="eSertificate" value="on">
+                <input type="checkbox" id="JOURNAL" name="journal" value="on">
                 <label for="eSERTIFICATE" id="Label7">Электронный сертификат о публикации</label>
                 <label for="" id="Label9">Дополнительно, если необходимо:</label>
                 <label for="MESAGE" id="Label10">Сообщение:</label>
