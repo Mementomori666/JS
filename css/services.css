@@ -45,7 +45,7 @@ body
     background-image: none;
     border: 0px #CCCCCC solid;
 }
-#FIO
+#fio
 {
     border: 1px #CCCCCC solid;
     background-color: #FFFFFF;
@@ -58,7 +58,7 @@ body
     text-align: left;
     vertical-align: middle;
 }
-#FIO:focus
+#fio:focus
 {
     border-color: #66AFE9;
     -webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075), 0px 0px 8px rgba(102,175,233,0.60);
@@ -1191,7 +1191,7 @@ body
     top: 413px;
     z-index: 20;
 }
-#FIO
+#fio
 {
     position: absolute;
     left: 309px;

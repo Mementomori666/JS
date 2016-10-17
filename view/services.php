@@ -16,7 +16,7 @@
                   enctype="multipart/form-data" accept-charset="UTF-8" id="Form1"
                 >
                 <input type="hidden" name="formid" value="form1">
-                <input type="text" id="FIO" name="ФИО" value="" tabindex="2" required>
+                <input type="text" id="fio" name="ФИО" value="" tabindex="2" required>
                 <label for="FIO" id="Label1" tabindex="1">Ф.И.О. автора, ответственного за переписку:</label>
                 <label for="EMAIL" id="Label2">Действующий адрес электронной почты:</label>
                 <input type="email" id="EMAIL" name="EMAIL" value="">

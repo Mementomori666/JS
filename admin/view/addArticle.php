@@ -1,100 +1,99 @@
 <?
 /*
- * от админки в принципе много не надо. по сути это форма, наверное,
- * на какой-нибудь закрытой части сайта под паролем,
- * где просто заполняешь те же самые поля:
- * Год выпуска, номер выпуска, название статьи, авторы,
- * ключевые слова, аннотации, коды и прочее,
- * с возможностью загрузки файла статьи
- * (хотя я архив могу и на хостинг заливать постатейно, не суть важно)
- * просто чтобы он путь к этому файлу знал. ну и для красоты картинка
- * первой страницы статьи как у Киберленинки и как сейчас в исходниках.
- * ну и, видимо, из этого всего будет формироваться страница статьи
- * с метаданными и кодом для гугл скулар. я буду счастлив,
- * а то придется сейчас отдельно страницу в редакторе делать,
- * потом вручную менять метатеги для гугл скулара, вставлять
- * это все в код страницы... у меня сейчас это занимает около 30 минут на одну статью((((*/
+* название статьи русский
+* название статьи английский
+* автор (добавить автора через js )
+ * фио
+ * место работы
+ * адрес места работы
+ * автор на англ (см выше)
+ * контакт корреспондента ( только мыло)
+* аннотация на русском, английском
+* ключевые слова русский
+* ключевые слова английский
+* удк
+* грнти
+* doi
+* загрузить статью pdf
+* загрузить превью статьи*/
 ?>
 <div class="container">
-   <form name="Форма_размещения_статьи" class="form-horizontal" role="form" method="post"
+   <form  id="article_add" class="form-horizontal" name="article_add" role="form" method="post"
          action="../index.php">
        <div class="form-group">
-             <label for="pub_year" class="col-md-2 control-label">Год выпуска:</label>
+             <label for="article_name" class="col-md-2 control-label">Название статьи русский: </label>
           <div class="col-md-6">
-             <input type="text" id="pub_year" class="form-control" name="pub_year" value="">
+             <input type="text" id="article_name" class="form-control" name="pub_year" >
           </div>
       </div>
       <div class="form-group">
-            <label for="num_mag" class="col-md-2 control-label">Номер выпуска:</label>
+            <label for="article_en_name" class="col-md-2 control-label">Название статьи английский: </label>
          <div class="col-md-6">
-            <input type="text" id="num_mag" class="form-control" name="num_mag" value="">
+            <input type="text" id="article_en_name" class="form-control" name="num_mag">
          </div>
       </div>
-      <div class="form-group">
-          <label for="article_name" class="col-md-2 control-label">Название статьи:</label>
-         <div class="col-md-6">
-            <input type="text" id="article_name" class="form-control" name="article_name" value="">
-         </div>
-      </div>
-      <div class="form-group">
-            <label for="FIO" class="col-md-2 control-label" >Ф.И.О. авторов:</label>
+
+      <fieldset style="border-bottom: 1px solid #c0c0c0; margin-bottom: 15px;"  form="article_add">
+         <legend>Авторы:</legend>
+         <div class="form-group">
+
+            <label for="fio" class="col-md-2 control-label">Ф.И.О автора:</label>
             <div class="col-md-6">
-               <input type="text" id="FIO" class="form-control" name="ФИО" value="" tabindex="2" required>
+               <input type="text" id="fio" class="form-control" name="fio">
             </div>
-      </div>
+
+         </div>
+         <div class="form-group">
+            <label for="fio_en" class="col-md-2 control-label" >Ф.И.О. авторов на английском:</label>
+            <div class="col-md-6">
+               <input type="text" id="fio_en" class="form-control" name="fio_en">
+            </div>
+         </div>
+         <div class="form-group">
+            <label for="place_of_work" class="col-md-2 control-label" >Место работы:</label>
+            <div class="col-md-6">
+               <input type="text" id="place_of_work" class="form-control" name="place_of_work">
+            </div>
+         </div>
+         <div class="form-group">
+            <label for="email" class="col-md-2 control-label" >e-mail:</label>
+            <div class="col-md-6">
+               <input type="text" id="email" class="form-control" name="email">
+            </div>
+         </div>
+         <div class="form-group">
+             <div class="col-md-3 col-md-offset-4 ">
+               <button type="button" id="add_author" class="btn btn-primary" name="add_author">
+                  Добавить автора
+               </button>
+            </div>
+         </div>
+
+      </fieldset>
       <div class="form-group">
-         <label for="SECTION" class="col-md-2 control-label">Раздел журнала:</label>
+         <label for="notation" class="col-md-2 control-label">Аннотация на русском:</label>
          <div class="col-md-6">
-         <select name="SECTION" size="1" class="form-control" id="SECTION">
-            <option value="Математика">Математика</option>
-            <option value="Механика">Механика</option>
-            <option value="Информатика">Информатика</option>
-            <option value="Физика">Физика</option>
-            <option>Химия</option>
-            <option>Технические науки</option>
-            <option>Сельскохозяйственные науки</option>
-            <option>Биология</option>
-            <option>Медицина</option>
-            <option>Экология</option>
-            <option>География, Науки о земле</option>
-            <option>Архитектура и строительство</option>
-            <option>Филология и журналистика</option>
-            <option>Искусствоведение</option>
-            <option>Культурология</option>
-            <option>Философия</option>
-            <option>История</option>
-            <option>Педагогика</option>
-            <option>Психология</option>
-            <option>Социология</option>
-            <option>Экономика и управление</option>
-            <option>Политология</option>
-            <option>Международные отношения</option>
-            <option>Правоведение</option>
-            <option>Физическая культура и спорт</option>
-         </select>
+            <textarea  id="notation" class="form-control" name=notation"" rows="5"></textarea>
+         </div>
+      </div>
+         <div class="form-group">
+         <label for="notation_en" class="col-md-2 control-label">Аннотация на английском:</label>
+         <div class="col-md-6">
+            <textarea  id="notation_en" class="form-control" name="notation_en" rows="5"></textarea>
          </div>
       </div>
       <div class="form-group">
-         <label for="LANG" class="col-md-2 control-label">Язык статьи:</label>
+         <label for="article" class="col-md-2 control-label">Загрузить статью:</label>
          <div class="col-md-6">
-         <select name="LANG" size="1" class="form-control" id="LANG">
-            <option value="Русский">Русский</option>
-            <option value="Английский">Английский</option>
-         </select>
+            <input type="file" id="article" class="form-control" name="article" required>
+         </div>
+      </div><div class="form-group">
+         <label for="article_prev" class="col-md-2 control-label">Загрузить статью:</label>
+         <div class="col-md-6">
+            <input type="file" id="article_prev" class="form-control" name="article_prev" required>
          </div>
       </div>
-      <div class="form-group">
-         <label for="ARTICLE" class="col-md-2 control-label">Загрузить статью:</label>
-         <div class="col-md-6">
-            <input type="file" id="ARTICLE" class="form-control" name="ARTICLE" required>
-         </div>
-      </div>
-      <div class="form-group">
-         <label for="notation" class="col-md-2 control-label">Сообщение:</label>
-         <div class="col-md-6">
-            <textarea name="notation" id="notation" class="form-control" rows="5"></textarea>
-         </div>
-      </div>
+
 
    </form>
 </div>
