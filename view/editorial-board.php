@@ -94,3 +94,8 @@
         </table>
     </div>
 </div>
+<?php
+$breadcrumbs = new Breadcrumbs();
+var_dump($breadcrumbs->getBreadcrumbs($breadArr));
+echo $breadcrumbs->getBreadcrumbs($breadArr);
+?>

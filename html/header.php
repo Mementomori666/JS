@@ -13,6 +13,7 @@
     <script src="/js/jquery-1.11.3.min.js"></script>
     <script src="/js/wb.lazyload.min.js"></script>
     <script src="/js/searchindex.js"></script>
+    <script src="/js/index.js"></script>
     <script>
         var features = 'toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes,status=yes,left=,top=,width=,height=';
         var searchDatabase = new SearchDatabase();

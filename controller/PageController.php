@@ -1,51 +1,63 @@
 <?php
 class PageController{
     public function actionIndex(){
-        View::render('main');
+        $breadcrums = ['Главная'];
+        View::render('main', ['breadArr' => $breadcrums]);
         return true;
     }
 
     public function actionAbout(){
-        View::render('about');
+        $breadcrums = ['Главная', 'О журнале'];
+        View::render('about', ['breadArr' => $breadcrums]);
     }
 
     public function actionArch(){
-        View::render('arch');
+        $breadcrums = ['Главная', 'Архив'];
+        View::render('arch', ['breadArr' => $breadcrums]);
     }
 
     public function actionContacts(){
-        View::render('contacts');
+        $breadcrums = ['Главная', 'Контакты'];
+        View::render('contacts', ['breadArr' => $breadcrums]);
     }
 
     public function actionEditorialBoard(){
-        View::render('editorial-board');
+        $breadcrums = ['Главная', 'Редакция'];
+        View::render('editorial-board', ['breadArr' => $breadcrums]);
     }
 
     public function actionEditorialPolicies(){
-        View::render('editorial-policies');
+        $breadcrums = ['Главная', 'Порядок рассмотрения'];
+        View::render('editorial-policies', ['breadArr' => $breadcrums]);
     }
 
     public function actionGuideForAuthors(){
-        View::render('guide-for-authors');
+        $breadcrums = ['Главная', 'Гайд для авторов'];
+        View::render('guide-for-authors', ['breadArr' => $breadcrums]);
     }
 
     public function actionPayment(){
-        View::render('payment');
+        $breadcrums = ['Главная', 'Условия оплаты'];
+        View::render('payment', ['breadArr' => $breadcrums]);
     }
 
     public function actionPublicationEthics(){
-        View::render('publication-ethics');
+        $breadcrums = ['Главная', 'Этика публикаций'];
+        View::render('publication-ethics', ['breadArr' => $breadcrums]);
     }
 
     public function actionArticleLoadOk(){
-        View::render('article-load-ok');
+        $breadcrums = ['Главная', 'Опубликовать статью', 'Статья опубликована'];
+        View::render('article-load-ok', ['breadArr' => $breadcrums]);
     }
 
     public function actionArticleLoadError(){
-        View::render('article-load-error');
+        $breadcrums = ['Главная', 'Опубликовать статью', 'Ошибка публикации'];
+        View::render('article-load-error', ['breadArr' => $breadcrums]);
     }
 
     public function actionServices(){
+        $breadcrums = ['Главная', 'Опубликовать статью'];
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $paramsForAuthor['fio'] = $paramsForAdmin['fio'] = htmlspecialchars(trim($_POST['fio']));
             $paramsForAuthor['article_name'] = $paramsForAdmin['article_name']
@@ -102,25 +114,30 @@ class PageController{
             $mailToAuthor->ClearAddresses();
             $mailToAuthor->ClearAttachments();
         }
-        View::render('services');
+        View::render('services', ['breadArr' => $breadcrums]);
     }
     public function actionNotFound(){
-        View::render('not-found');
+        $breadcrums = ['Главная', 'Страница не найдена'];
+        View::render('not-found', ['breadArr' => $breadcrums]);
     }
 
     public function actionPayok(){
-        View::render('payok');
+        $breadcrums = ['Главная', 'Условия оплаты', 'Оплата успешно проведена'];
+        View::render('payok', ['breadArr' => $breadcrums]);
     }
 
     public function actionDoi(){
-        View::render('doi');
+        $breadcrums = ['Главная', 'Условия оплаты', 'DOI'];
+        View::render('doi', ['breadArr' => $breadcrums]);
     }
 
     public function actionOpenAccess(){
-        View::render('open-access');
+        $breadcrums = ['Главная', 'Условия оплаты', 'Авторский взнос и информация об авторских правах'];
+        View::render('open-access', ['breadArr' => $breadcrums]);
     }
 
     public function actionAffiliate(){
-        View::render('affiliate');
+        $breadcrums = ['Главная', 'Условия оплаты', 'Партнерская программа'];
+        View::render('affiliate', ['breadArr' => $breadcrums]);
     }
 }

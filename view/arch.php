@@ -38,3 +38,8 @@
             <span id="wb_uid15"><strong>Архив выпусков журнала</strong></span></div>
     </div>
 </div>
+<?php
+$breadcrumbs = new Breadcrumbs();
+var_dump($breadcrumbs->getBreadcrumbs($breadArr));
+echo $breadcrumbs->getBreadcrumbs($breadArr);
+?>

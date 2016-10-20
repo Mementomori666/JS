@@ -97,3 +97,8 @@
                     href="./files/JS_info_ru.doc">и статье</a></span></div>
     </div>
 </div>
+<?php
+$breadcrumbs = new Breadcrumbs();
+var_dump($breadcrumbs->getBreadcrumbs($breadArr));
+echo $breadcrumbs->getBreadcrumbs($breadArr);
+?>
