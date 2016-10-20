@@ -82,6 +82,51 @@
             <textarea  id="notation_en" class="form-control" name="notation_en" rows="5"></textarea>
          </div>
       </div>
+
+      <div class="form-group">
+
+         <label for="keywords" class="col-md-2 control-label">Ключевые слова:</label>
+         <div class="col-md-6">
+            <input type="text" id="keywords" class="form-control" name="keywords">
+         </div>
+
+      </div>
+      <div class="form-group">
+
+         <label for="keywords_en" class="col-md-2 control-label">Ключевые слова на английском:</label>
+         <div class="col-md-6">
+            <input type="text" id="keywords_en" class="form-control" name="keywords_en">
+         </div>
+
+      </div>
+      <fieldset class="form-group" style="border-bottom: 1px solid #c0c0c0; margin-bottom: 15px;">
+         <legend>Коды:</legend>
+
+         <div class="form-group">
+
+            <label for="udk" class="col-md-2 control-label">УДК:</label>
+            <div class="col-md-6">
+               <input type="text" id="udk" class="form-control" name="udk">
+            </div>
+
+         </div>
+         <div class="form-group">
+
+            <label for="grnti" class="col-md-2 control-label">ГРНТИ:</label>
+            <div class="col-md-6">
+               <input type="text" id="grnti" class="form-control" name="grnti">
+            </div>
+
+         </div>
+         <div class="form-group">
+
+            <label for="doi" class="col-md-2 control-label">DOI:</label>
+            <div class="col-md-6">
+               <input type="text" id="doi" class="form-control" name="doi">
+            </div>
+
+         </div>
+      </fieldset>
       <div class="form-group">
          <label for="article" class="col-md-2 control-label">Загрузить статью:</label>
          <div class="col-md-6">
