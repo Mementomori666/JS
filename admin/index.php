@@ -35,6 +35,7 @@ require_once "secure/secure.php";
 require_once "classes/Autoload.php";
 require_once "html/header.php";
 require_once "html/menu.php";
+
 try {
    if(!class_exists($controller, true)) throw new Exception();
    $controllerClass = new $controller();
