@@ -1,6 +1,9 @@
 <?php
 class PageController{
     public function actionAddArticle(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+        }
         ViewAdmin::render('addArticle');
         return true;
     }
