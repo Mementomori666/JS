@@ -1,4 +1,7 @@
 <?
+/**
+ * @var $output string
+ */
 /*
 * название статьи русский
 * название статьи английский
@@ -18,6 +21,7 @@
 * загрузить превью статьи*/
 ?>
 <div class="container">
+    <?php if(isset($output)) echo "<h2>$output</h2>" ?>
     <form id="article_add" class="form-horizontal" name="article_add" role="form" method="post"
           action="../index.php">
         <div class="form-group">
