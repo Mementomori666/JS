@@ -11,7 +11,7 @@ $controller = 'PageController';
 $action = 'actionAddArticle';
 $containerStyle = 'login';
 $params = array();
-
+$menuSet="";
 if ($_SERVER['REQUEST_URI'] != '/admin/') {
    $urlPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
    $urlPath = explode('admin', $urlPath)[1];
@@ -25,11 +25,13 @@ if ($_SERVER['REQUEST_URI'] != '/admin/') {
       foreach($actionArray as &$item) $item = ucfirst($item);
       $action = implode('', $actionArray);
    } else $action = "addArticle";
+  
    $action = "action" . ucfirst($action);
    for ($i = 0; $i < count($uriParts); $i++) {
       $params[$uriParts[$i]] = $uriParts[++$i];
    }
 }
+$active=$action;
 require_once "secure/session.php";
 require_once "secure/secure.php";
 require_once "classes/Autoload.php";
@@ -46,7 +48,7 @@ try {
    $action = 'actionNotFound';
    $controllerClass = new $controller();
    $controllerClass->$action($params);
-   var_dump($controllerClass);
+   
 }
 
 
