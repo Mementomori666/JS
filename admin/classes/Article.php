@@ -6,7 +6,7 @@
  * Time: 10:34
  */
 
-include_once '../../classes/Connect.php';
+require_once '../classes/Connect.php';
 
 class Article
 {
@@ -21,6 +21,8 @@ class Article
     private $doi;
     private $article_link;
     private $preview_link;
+    private $pubyear;
+    private $num_mag;
 
     public function __construct($title_ru = null,
                                 $title_en = null,
@@ -32,7 +34,9 @@ class Article
                                 $grnti = null,
                                 $doi = null,
                                 $article_link = null,
-                                $preview_link = null)
+                                $preview_link = null,
+                                $pubyear = 0,
+                                $num_mag = 0)
     {
         $this->title_ru = $this->strClean($title_ru);
         $this->title_en = $this->strClean($title_en);
@@ -44,6 +48,8 @@ class Article
         $this->doi = $this->strClean($doi);
         $this->article_link = $this->strClean($article_link);
         $this->preview_link = $this->strClean($preview_link);
+        $this->pubyear = $this->intClean($pubyear);
+        $this->num_mag = $this->intClean($num_mag) ;
     }
 
     /**
@@ -134,27 +140,47 @@ class Article
         $this->preview_link = $this->strClean($preview_link);
     }
 
+    /**
+     * @param number $pubyear
+     */
+    public function setPubyear($pubyear)
+    {
+        $this->pubyear = $this->intClean($pubyear);
+    }
+
+    /**
+     * @param number $num_mag
+     */
+    public function setNumMag($num_mag)
+    {
+        $this->num_mag = $this->intClean($num_mag);
+    }
+
     public function strClean($data)
     {
         return strip_tags(trim($data));
     }
-
+    public function intClean($data){
+        return abs((int)$data);
+    }
 
     public function addArticle()
     {
         try {
             $link = Connect::getInstance()->getLink();
             $prepare = "INSERT INTO article (title_ru, title_en, annotation_ru, annotation_en, key_words_ru,
-                                key_words_en, udk, grnti, doi, article_link, preview_link)
+                                key_words_en, udk, grnti, doi, article_link, preview_link, pubyear, num_mag)
                                  VALUES (:title_ru, :title_en, :annotation_ru, :annotation_en, :key_words_ru,
-                                :key_words_en, :udk, :grnti, :doi, :article_link, :preview_link)";
+                                :key_words_en, :udk, :grnti, :doi, :article_link, :preview_link, :pubyear, :num_mag)";
             $query = $link->prepare($prepare);
             $query->execute([':title_ru' => $this->title_ru, ':title_en' => $this->title_en,
                 ':annotation_ru' => $this->annotation_ru, ':annotation_en' => $this->annotation_en,
                 ':key_words_ru' => $this->key_words_ru, ':key_words_en' => $this->key_words_en,
                 ':udk' => $this->udk, ':grnti' => $this->grnti, ':doi' => $this->doi,
-                ':article_link' => $this->article_link, ':preview_link' => $this->preview_link]);
-            return true;
+                ':article_link' => $this->article_link, ':preview_link' => $this->preview_link,
+                ':pubyear'=>$this->pubyear, ':num_mag'=>$this->num_mag ]);
+            $link->lastInsertId();
+            return $link->lastInsertId();;
         } catch (Exception $e) {
             echo $e->getMessage();
             return false;

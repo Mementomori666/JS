@@ -5,7 +5,7 @@
  * Date: 28.10.2016
  * Time: 10:42
  */
-include_once '../../classes/Connect.php';
+require_once '../classes/Connect.php';
 
 class Author
 {
@@ -13,7 +13,7 @@ class Author
     private $fio_en;
     private $current_job;
     private $email;
-
+    private $article_id;
     /**
      * AddAuthors constructor.
      * @param $fio_ru
@@ -70,11 +70,14 @@ class Author
     {
         try {
             $link = Connect::getInstance()->getLink();
-            $prepare = "INSERT INTO authors (fio_ru, fio_en, current_job, email)
-                      VALUES (:fio_ru, :fio_en, :current_job, :email)";
+            $this->article_id = $link->lastInsertId();
+            $prepare = "INSERT INTO author (fio_ru, fio_en, current_job, email, article_id)
+                      VALUES (:fio_ru, :fio_en, :current_job, :email, :article_id)";
             $query = $link->prepare($prepare);
             $query->execute([':fio_ru' => $this->fio_ru, ':fio_en' => $this->fio_en,
-                ':current_job' => $this->current_job, ':email' => $this->email]);
+                ':current_job' => $this->current_job, ':email' => $this->email,
+                ':article_id'=>$this->article_id ]);
+            var_dump($query);
             return true;
         } catch (Exception $e) {
             echo $e->getMessage();

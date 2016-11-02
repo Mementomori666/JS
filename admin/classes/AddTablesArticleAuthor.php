@@ -1,6 +1,6 @@
 <?php
 
-include_once '../../classes/Connect.php';
+include_once '../classes/Connect.php';
 
 class AddTablesArticleAuthor{
     public static function addTables(){
@@ -18,7 +18,9 @@ class AddTablesArticleAuthor{
                 grnti VARCHAR (50),
                 doi TEXT,
                 article_link TEXT,
-                preview_link TEXT
+                preview_link TEXT,
+                pubyear INT,
+                num_mag INT
                 );';
             $link->exec($query);
             echo "article table created\n<br>";

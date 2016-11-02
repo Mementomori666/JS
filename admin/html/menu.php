@@ -12,14 +12,13 @@
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <?$page = $_SERVER['REQUEST_URI'];
-      $page=strip_tags(trim($page));
-      if ($page=="addArticle"){
+      <?
+      if ($active =="actionAddArticle"){
       ?>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
          <ul class="nav navbar-nav">
-            <li class="active"><a href="/page/add-article">Добавление Статей</a></li>
-            <li ><a href="/page/add-user">Добавление Пользователей</a></li>
+            <li class="active"><a href="/admin/page/add-article">Добавление Статей</a></li>
+            <li ><a href="/admin/page/add-user">Добавление Пользователей</a></li>
 
          </ul>
          <?
