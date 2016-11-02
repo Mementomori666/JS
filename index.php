@@ -22,9 +22,9 @@ if ($_SERVER['REQUEST_URI'] != '/') {
         $action = implode('', $actionArray);
     } else $action = "index";
     $action = "action" . ucfirst($action);
-
     for ($i = 0; $i < count($uriParts); $i++) {
-        $params[$uriParts[$i]] = $uriParts[++$i];
+        if(isset($uriParts[$i+1]))$params[$uriParts[$i]] = $uriParts[++$i];
+        else $action = 'notFound';
     }
 }
 require_once 'classes/Autoload.php';
