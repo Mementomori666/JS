@@ -1,6 +1,5 @@
 <?php
 
-include_once '../classes/Connect.php';
 
 class AddTablesArticleAuthor{
     public static function addTables(){

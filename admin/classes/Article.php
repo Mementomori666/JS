@@ -6,8 +6,6 @@
  * Time: 10:34
  */
 
-require_once '../classes/Connect.php';
-
 class Article
 {
     private $title_ru;

@@ -1,5 +1,5 @@
 <?php
-$root_dir = 'jscientia';
+$root_dir = 'JS.local';
 define('DS', DIRECTORY_SEPARATOR);
 define ('ROOT_DIR', explode($root_dir, __DIR__)[0].$root_dir.DS);
 define('ADMIN_MALE', 'jsadmin@js.ru');

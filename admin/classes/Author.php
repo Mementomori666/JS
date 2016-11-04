@@ -5,7 +5,6 @@
  * Date: 28.10.2016
  * Time: 10:42
  */
-require_once '../classes/Connect.php';
 
 class Author
 {
@@ -21,12 +20,14 @@ class Author
      * @param $current_job
      * @param $email
      */
-    public function __construct($fio_ru = null, $fio_en = null, $current_job = null, $email = null)
+    public function __construct($fio_ru = null, $fio_en = null, $current_job = null,
+                                $email = null, $article_id = 0)
     {
         $this->fio_ru = $this->strClean($fio_ru);
         $this->fio_en = $this->strClean($fio_en);
         $this->current_job = $this->strClean($current_job);
         $this->email = $this->strClean($email);
+
     }
 
     /**
@@ -69,8 +70,12 @@ class Author
     public function addAuthor()
     {
         try {
+//            $link = Connect::getInstance()->getLink();
             $link = Connect::getInstance()->getLink();
-            $this->article_id = $link->lastInsertId();
+            $result = $link->query('SELECT MAX(id) as id FROM article',PDO::FETCH_ASSOC);
+            $result = $result->fetchAll();
+           // var_dump($result); die();
+            $this->article_id = $result[0]['id'];
             $prepare = "INSERT INTO author (fio_ru, fio_en, current_job, email, article_id)
                       VALUES (:fio_ru, :fio_en, :current_job, :email, :article_id)";
             $query = $link->prepare($prepare);
