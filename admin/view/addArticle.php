@@ -23,7 +23,7 @@
 <div class="container">
     <?php if(isset($output)) echo "<h2>$output</h2>" ?>
     <form id="article_add" class="form-horizontal" name="article_add" role="form" method="post"
-          action="../index.php">
+          action="">
         <div class="form-group">
             <label for="article_name" class="col-md-2 control-label">Название статьи русский: </label>
 
@@ -149,6 +149,24 @@
             </div>
         </fieldset>
         <div class="form-group">
+
+            <label for="pubyear" class="col-md-2 control-label">Год выпуска:</label>
+
+            <div class="col-md-6">
+                <input type="text" id="pubyear" class="form-control" name="pubyear">
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <label for="num_mag" class="col-md-2 control-label">Номер журнала:</label>
+
+            <div class="col-md-6">
+                <input type="text" id="num_mag" class="form-control" name="num_mag">
+            </div>
+
+        </div>
+        <div class="form-group">
             <label for="article" class="col-md-2 control-label">Загрузить статью:</label>
 
             <div class="col-md-6">
@@ -163,6 +181,6 @@
             </div>
         </div>
 
-
+        <input type="submit" name="submit" value="Добавить" class="btn btn-primary">
     </form>
 </div>
