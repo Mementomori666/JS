@@ -180,7 +180,6 @@
                 <input type="file" id="article_prev" class="form-control" name="article_prev" required>
             </div>
         </div>
-
         <input type="submit" name="submit" value="Добавить" class="btn btn-primary">
     </form>
 </div>
