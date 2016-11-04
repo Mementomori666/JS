@@ -70,19 +70,18 @@ class Author
     public function addAuthor()
     {
         try {
-//            $link = Connect::getInstance()->getLink();
             $link = Connect::getInstance()->getLink();
             $result = $link->query('SELECT MAX(id) as id FROM article',PDO::FETCH_ASSOC);
-            $result = $result->fetchAll();
-           // var_dump($result); die();
+            $result = $result->fetchAll();       
             $this->article_id = $result[0]['id'];
+            if($this->article_id==null) $this->article_id = 0;
             $prepare = "INSERT INTO author (fio_ru, fio_en, current_job, email, article_id)
                       VALUES (:fio_ru, :fio_en, :current_job, :email, :article_id)";
             $query = $link->prepare($prepare);
             $query->execute([':fio_ru' => $this->fio_ru, ':fio_en' => $this->fio_en,
                 ':current_job' => $this->current_job, ':email' => $this->email,
                 ':article_id'=>$this->article_id ]);
-            var_dump($query);
+          
             return true;
         } catch (Exception $e) {
             echo $e->getMessage();
