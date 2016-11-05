@@ -21,9 +21,9 @@
 * загрузить превью статьи*/
 ?>
 <div class="container">
-    <?php if(isset($output)) echo "<h2>$output</h2>" ?>
+    <?php if(isset($output)) echo "<h3>$output</h3>" ?>
     <form id="article_add" class="form-horizontal" name="article_add" role="form" method="post"
-          action="">
+          action="" enctype="multipart/form-data">
         <div class="form-group">
             <label for="article_name" class="col-md-2 control-label">Название статьи русский: </label>
 
@@ -153,7 +153,7 @@
             <label for="pubyear" class="col-md-2 control-label">Год выпуска:</label>
 
             <div class="col-md-6">
-                <input type="text" id="pubyear" class="form-control" name="pubyear">
+                <input type="text" id="pubyear" class="form-control" name="pubyear" required>
             </div>
 
         </div>
@@ -162,7 +162,7 @@
             <label for="num_mag" class="col-md-2 control-label">Номер журнала:</label>
 
             <div class="col-md-6">
-                <input type="text" id="num_mag" class="form-control" name="num_mag">
+                <input type="text" id="num_mag" class="form-control" name="num_mag" required>
             </div>
 
         </div>

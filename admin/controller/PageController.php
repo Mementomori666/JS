@@ -15,8 +15,9 @@ class PageController{
                 if (isset($_POST['udk'])) $article->setUdk($_POST['udk']);
                 if (isset($_POST['doi'])) $article->setDoi($_POST['doi']);
                 if (isset($_POST['grnti'])) $article->setGrnti($_POST['grnti']);
-                if (isset($_POST['pubyear'])) $article->setPubyear($_POST['pubyear']);
-                if (isset($_POST['num_mag'])) $article->setNumMag($_POST['num_mag']);
+                $article->setPubyear($_POST['pubyear']);
+                $article->setNumMag($_POST['num_mag']);
+//                var_dump($_FILES);die();
                 if (isset($_FILES['article']) && $_FILES['article']['error'] == UPLOAD_ERR_OK) {
                     $uploadArticle = $uploadDir . basename($_FILES['article']['name']);
                     if (move_uploaded_file($_FILES['article']['tmp_name'], $uploadArticle)) {

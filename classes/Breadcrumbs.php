@@ -36,7 +36,7 @@ class Breadcrumbs
             }else{
                 $bread = $this->breadcrumbs;
                 $bread = $bread[$array[$i]];
-                $str .= "<li><a href='$bread'>$array[$i]</a></li>";
+                $str .= "<li><a href=/".parse_url($_SERVER['REQUEST_URI'], PHP_URL_HOST).'page/'.$bread.">$array[$i]</a></li>";
             }
         }
         $str .= '</ul></div>';

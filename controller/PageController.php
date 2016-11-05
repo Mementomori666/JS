@@ -11,7 +11,14 @@ class PageController{
         View::render('about', ['breadArr' => $breadcrums]);
     }
 
-    public function actionArch(){
+    public function actionArch($params = null){
+        var_dump($params);
+        if(!empty($params)){
+            $year = array_keys($params)[0];
+            $breadcrums = ['Главная', 'Архив', $year];
+            View::render('issue', ['breadArr' => $breadcrums]);
+            return true;
+        }
         $breadcrums = ['Главная', 'Архив'];
         View::render('arch', ['breadArr' => $breadcrums]);
     }
