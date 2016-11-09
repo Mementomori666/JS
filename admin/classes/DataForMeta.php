@@ -33,8 +33,10 @@ class DataForMeta
       try {
          $link = Connect::getInstance()->getLink();
          $query = "SELECT fio_ru, fio_en, current_job, email, article_id
-                      FROM 'author'   ";
-
+                      FROM 'author'  ; ";
+         $result = $link->query($query,PDO::FETCH_ASSOC);
+         $result = $result->fetchAll();
+         return $result;
       } catch (PDOException $e) {
          echo $e->getMessage();
       }
