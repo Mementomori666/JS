@@ -11,7 +11,8 @@ class DataForMeta
 {
    public $year = 0;
    public $numMag = 0;
-     /**
+
+   /**
     * @param int $year
     */
    public function setYear($year)
@@ -26,44 +27,57 @@ class DataForMeta
    {
       $this->numMag = $numMag;
    }
-   
+
 
    private function getAuthorSql()
    {
       try {
          $link = Connect::getInstance()->getLink();
          $query = "SELECT fio_ru, fio_en, current_job, email, article_id
-                      FROM 'author'  ; ";
-         $result = $link->query($query,PDO::FETCH_ASSOC);
-         $result = $result->fetchAll();
+                      FROM author  ; ";
+         $result = $link->query($query);
+         $result = $result->fetchAll(PDO::FETCH_ASSOC);
+//         var_dump($result); die();
          return $result;
+
       } catch (PDOException $e) {
          echo $e->getMessage();
       }
    }
-   private function getArticleSql(){
+
+   private function getArticleSql()
+   {
       try {
          $link = Connect::getInstance()->getLink();
          $sql = "SELECT id, title_ru, title_en, annotation_ru, annotation_en, key_words_ru,
                          key_words_en, udk, grnti, doi, article_link, preview_link, pubyear, num_mag 
-                  FROM 'article' WHERE pubyear =':pubyear'AND num_mag = ':num_mag' ;";
+                  FROM article 
+                  WHERE pubyear = :puyear AND num_mag = :mag ;";
          $query = $link->prepare($sql);
-         $result = $query->execute(array(':pubyear' => $this->year, ':num_mug'=>$this->numMag));
-         $result = $result->fetch(PDO::FETCH_ASSOC);
+         $query->execute(array(':puyear' => $this->year, ':mag' => $this->numMag));
+         $result = $query->fetchAll(PDO::FETCH_ASSOC);
+//         var_dump($result); die();
          return $result;
-      }catch (PDOException $e){
+      } catch (PDOException $e) {
          echo $e->getMessage();
          return false;
       }
    }
 
-   
 
-   public function getArticle(){
+   public function getArticle()
+   {
       $articleArray = $this->getArticleSql();
       $authorArray = $this->getAuthorSql();
-     if ($authorArray['article_id']==$articleArray['id'])
-        return $result = $articleArray['authors'] = $authorArray;
-     
+      foreach ($articleArray as $articles) {
+         foreach ($authorArray as $authors) {
+            if ($articles['id'] == $authors['article_id']) {
+               $articles['authors'] = $authors;
+               $id = $articles['id'];
+               $articlesArray["$id"] = $articles;
+            }
+         }
+      }
+      return $articlesArray;
    }
 }
