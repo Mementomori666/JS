@@ -30,4 +30,6 @@ $data = new DataForMeta();
 $data->setYear($year);
 $data->setNumMag($numMag);
 $result = $data->getArticle();
+echo '<pre>';
 var_dump($result);
+echo '</pre>';

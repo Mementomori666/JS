@@ -21,7 +21,9 @@
 * загрузить превью статьи*/
 ?>
 <div class="container">
-    <?php if(isset($output)) echo "<h3>$output</h3>" ?>
+    <?php
+    if(isset($output)) echo "<h3>$output</h3>"
+    ?>
     <form id="article_add" class="form-horizontal" name="article_add" role="form" method="post"
           action="" enctype="multipart/form-data">
         <div class="form-group">

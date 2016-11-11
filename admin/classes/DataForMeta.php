@@ -29,14 +29,15 @@ class DataForMeta
    }
 
 
-   private function getAuthorSql()
+   private function getAuthorSql($article_id)
    {
       try {
          $link = Connect::getInstance()->getLink();
-         $query = "SELECT fio_ru, fio_en, current_job, email, article_id
-                      FROM author  ; ";
-         $result = $link->query($query);
-         $result = $result->fetchAll(PDO::FETCH_ASSOC);
+         $sql = "SELECT fio_ru, fio_en, current_job, email, article_id
+                      FROM author WHERE article_id = :id;";
+         $query = $link->prepare($sql);
+         $query->execute([':id' => $article_id]);
+         $result = $query->fetchAll(PDO::FETCH_ASSOC);
 //         var_dump($result); die();
          return $result;
 
@@ -68,16 +69,17 @@ class DataForMeta
    public function getArticle()
    {
       $articleArray = $this->getArticleSql();
-      $authorArray = $this->getAuthorSql();
-      foreach ($articleArray as $articles) {
-         foreach ($authorArray as $authors) {
-            if ($articles['id'] == $authors['article_id']) {
-               $articles['authors'] = $authors;
-               $id = $articles['id'];
-               $articlesArray["$id"] = $articles;
-            }
-         }
+//      $authorArray = $this->getAuthorSql();
+      foreach ($articleArray as &$articles) {
+         $articles['authors'] = $this->getAuthorSql($articles['id']);
+//         foreach ($authorArray as $authors) {
+//            if ($articles['id'] == $authors['article_id']) {
+//               $articles['authors'] = $authors;
+//               $id = $articles['id'];
+//               $articlesArray["$id"] = $articles;
+//            }
+//         }
       }
-      return $articlesArray;
+      return $articleArray;
    }
 }

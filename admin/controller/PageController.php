@@ -4,7 +4,7 @@ class PageController{
         $output = '';
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $uploadDir = '../uploads/';
+                $uploadDir = str_replace('admin'.DS, '', ROOT_DIR) .'upload'.DS;
                 $article = new Article();
                 if (isset($_POST['title_ru'])) $article->setTitleRu($_POST['title_ru']);
                 if (isset($_POST['title_en'])) $article->setTitleEn($_POST['title_en']);
@@ -17,7 +17,7 @@ class PageController{
                 if (isset($_POST['grnti'])) $article->setGrnti($_POST['grnti']);
                 $article->setPubyear($_POST['pubyear']);
                 $article->setNumMag($_POST['num_mag']);
-//                var_dump($_FILES);die();
+//                var_dump($_POST);die();
                 if (isset($_FILES['article']) && $_FILES['article']['error'] == UPLOAD_ERR_OK) {
                     $uploadArticle = $uploadDir . basename($_FILES['article']['name']);
                     if (move_uploaded_file($_FILES['article']['tmp_name'], $uploadArticle)) {
@@ -40,6 +40,11 @@ class PageController{
                 } else {
                     $output .= "Не удалось загрузить файл превью!\n";
                 }
+                try {
+                    $article->addArticle();
+                } catch (Exception $e) {
+                    $output .= $e->getMessage();
+                }
                 $count = 1;
                 while (isset($_POST['fio_ru' . $count]) || isset($_POST['fio_en' . $count]) || isset($_POST['current_job' . $count]) || isset($_POST['email' . $count])) {
                     $author = new Author();
@@ -49,16 +54,12 @@ class PageController{
                     if (isset($_POST['email' . $count])) $author->setEmail($_POST['email' . $count]);
                     try {
                         $author->addAuthor();
+                        var_dump($author);
                     } catch (Exception $e) {
                         $output .= $e->getMessage();
                         break;
                     }
                     $count++;
-                            }
-                try {
-                    $article->addArticle();
-                } catch (Exception $e) {
-                    $output .= $e->getMessage();
                 }
         }
         ViewAdmin::render('addArticle', [
