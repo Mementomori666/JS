@@ -12,15 +12,29 @@ class PageController{
     }
 
     public function actionArch($params = null){
-        var_dump($params);
         if(!empty($params)){
             $year = array_keys($params)[0];
+            $release = $params[$year];
+            $releaseObject = new DataForMeta($year, $release);
+            $releaseArticles = $releaseObject->getArticle();
+            $allReleases = DataForMeta::getAllReleases();
             $breadcrums = ['Главная', 'Архив', $year];
-            View::render('issue', ['breadArr' => $breadcrums]);
-            return true;
+            View::render('arch', [
+                'breadArr' => $breadcrums,
+                'articles' => $releaseArticles,
+                'allReleases' => $allReleases,
+                'pubyear' => $year,
+                'num_mag' => $release
+            ]);
+        }else{
+            /**
+             * @var $pubyear integer
+             * @var $num_mag integer
+             */
+            $latest = DataForMeta::getLatestRelease();
+            extract($latest[0]);
+            header("Location: /page/arch/$pubyear/$num_mag", true, 303);
         }
-        $breadcrums = ['Главная', 'Архив'];
-        View::render('arch', ['breadArr' => $breadcrums]);
     }
 
     public function actionContacts(){

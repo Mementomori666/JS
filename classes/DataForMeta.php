@@ -13,6 +13,18 @@ class DataForMeta
    public $numMag = 0;
 
    /**
+    * DataForMeta constructor.
+    * @param int $year
+    * @param int $numMag
+    */
+   public function __construct($year, $numMag)
+   {
+      $this->year = $year;
+      $this->numMag = $numMag;
+   }
+
+
+   /**
     * @param int $year
     */
    public function setYear($year)
@@ -81,5 +93,26 @@ class DataForMeta
 //         }
       }
       return $articleArray;
+   }
+
+   public static function getLatestRelease(){
+      $link = Connect::getInstance()->getLink();
+      $sql = "SELECT pubyear, max(num_mag) as num_mag FROM article WHERE pubyear IN (SELECT max(pubyear) FROM article)";
+      $res = $link->query($sql, PDO::FETCH_ASSOC);
+      $res = $res->fetchAll();
+      return $res;
+   }
+
+   public static function getAllReleases(){
+      $link = Connect::getInstance()->getLink();
+      $sql = "SELECT DISTINCT pubyear FROM article ORDER BY pubyear DESC";
+      $res = $link->query($sql, PDO::FETCH_ASSOC);
+      $res = $res->fetchAll();
+      foreach($res as &$year){
+         $sql = "SELECT DISTINCT num_mag FROM article WHERE pubyear = {$year['pubyear']} ORDER BY num_mag DESC";
+         $releases = $link->query($sql, PDO::FETCH_ASSOC);
+         $year['releases'] = $releases->fetchAll();
+      }
+      return $res;
    }
 }
