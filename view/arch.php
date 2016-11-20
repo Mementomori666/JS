@@ -17,6 +17,7 @@
                     $str .= '<a class="arch_menu_link"
                         href="/page/arch/' .$year['pubyear'] . '/' . $release['num_mag'] . '">'
                         . $release['num_mag'] . '</a>';
+                    $str .= '<br>';
                 }
                 $str .= '</div>';
             }
