@@ -38,7 +38,13 @@
                     if(isset($author['fio_ru'])) $str .= $author['fio_ru'] . '&nbsp';
                     if(isset($author['fio_en'])) $str .= $author['fio_en'] . '&nbsp';
                 }
-                $str .= '</div></div>';
+                $str .= '</div>';
+                if(isset($article['article_link']) && ($article['article_link'] != '')) {
+                    $linkArr = explode('\\', $article['article_link']);
+                    $link = $linkArr[count($linkArr) - 1];
+                    $str .= '<a class="arch_content_download_link" href="/upload/' . $link . '">Скачать статью</a>';
+                }
+                $str .= '</div>';
             }
             echo $str;
             ?>
