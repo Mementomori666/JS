@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var $articles array
+ * @var $allReleases array
+ */
+?>
+
 <div id="Layer1">
     <div id="Layer1_Container">
         <div class="arch_menu" id="archMenu">
@@ -18,9 +25,25 @@
         </div>
         <div class="arch_content" id="archContent">
             <h1 class="arch_content_title">Juvenis scientia <?=$pubyear . ' №' . $num_mag ?></h1>
+            <?php
+            $str = '';
+            foreach ($articles as $article) {
+                $str .= '<div class="arch_content_article">';
+                if (isset($article['title_ru'])) $str .= '<a class = "arch_content_article_title" href="/page/arch/'.
+                    $pubyear . '/' . $num_mag . '/article/' . $article['id'] .'">' . $article['title_ru'] . '</a>';
+                if (isset($article['title_en'])) $str .= '<a class = "arch_content_article_title">' . $article['title_en'] . '</a>';
+                $str .= '<div class="arch_content_article_authors">';
+                foreach($article['authors'] as $author){
+                    if(isset($author['fio_ru'])) $str .= $author['fio_ru'] . '&nbsp';
+                    if(isset($author['fio_en'])) $str .= $author['fio_en'] . '&nbsp';
+                }
+                $str .= '</div></div>';
+            }
+            echo $str;
+            ?>
         </div>
         <pre>
-        <?php var_dump($articles) ?>
+        <?php //var_dump($articles) ?>
         <br>
         <br>
         <?php //var_dump($allReleases) ?>
