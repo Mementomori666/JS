@@ -15,17 +15,30 @@ class PageController{
         if(!empty($params)){
             $year = array_keys($params)[0];
             $release = $params[$year];
-            $releaseObject = new DataForMeta($year, $release);
-            $releaseArticles = $releaseObject->getArticle();
             $allReleases = DataForMeta::getAllReleases();
-            $breadcrums = ['Главная', 'Архив', $year];
-            View::render('arch', [
-                'breadArr' => $breadcrums,
-                'articles' => $releaseArticles,
-                'allReleases' => $allReleases,
-                'pubyear' => $year,
-                'num_mag' => $release
-            ]);
+            if(count($params) === 1) {
+                $releaseObject = new DataForMeta($year, $release);
+                $releaseArticles = $releaseObject->getArticle();
+                $breadcrums = ['Главная', 'Архив', $year];
+                View::render('arch', [
+                    'breadArr' => $breadcrums,
+                    'articles' => $releaseArticles,
+                    'allReleases' => $allReleases,
+                    'pubyear' => $year,
+                    'num_mag' => $release
+                ]);
+            }elseif(count($params) == 2){
+                $id_article = $params['article'];
+                $article = DataForMeta::getArticleById($id_article);
+                $breadcrums = ['Главная', 'Архив', $year];
+                View::render('article',[
+                    'breadArr' => $breadcrums,
+                    'allReleases' => $allReleases,
+                    'pubyear' => $year,
+                    'num_mag' => $release,
+                    'article' => $article
+                ]);
+            }
         }else{
             /**
              * @var $pubyear integer

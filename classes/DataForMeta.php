@@ -115,4 +115,17 @@ class DataForMeta
       }
       return $res;
    }
+
+   public static function getArticleById($id){
+      $link = Connect::getInstance()->getLink();
+      $sql = "SELECT * FROM article WHERE id = :id ;";
+      $query = $link->prepare($sql);
+      $query->execute(array(':id' => $id));
+      $result = $query->fetchAll(PDO::FETCH_ASSOC);
+      $sql = "SELECT * FROM author WHERE article_id = :id ;";
+      $query = $link->prepare($sql);
+      $query->execute(array(':id' => $id));
+      $result['authors'] = $query->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+   }
 }
