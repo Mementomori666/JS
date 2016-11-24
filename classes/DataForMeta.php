@@ -122,6 +122,7 @@ class DataForMeta
       $query = $link->prepare($sql);
       $query->execute(array(':id' => $id));
       $result = $query->fetchAll(PDO::FETCH_ASSOC);
+      $result = $result[0];
       $sql = "SELECT * FROM author WHERE article_id = :id ;";
       $query = $link->prepare($sql);
       $query->execute(array(':id' => $id));
