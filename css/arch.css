@@ -176,3 +176,72 @@ div#container
     width: 100%;
     height: 100%;
 }
+.arch_menu
+{
+    position: absolute;
+    float: left;
+    left: auto;
+    width: 200px;
+    background-color: #c4e3f3;
+    background-image: none;
+    text-align: center;
+
+
+}
+.arch_menu_one_year
+{
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.arch_menu_year_text
+{
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-decoration: underline;
+
+}
+.arch_menu_link
+{
+    font-size: 1.35em;
+    text-decoration: none;
+
+}
+.arch_content
+{
+    position: absolute;
+    float: left;
+    width: 700px;
+    left: 220px;
+}
+.arch_content_title
+{
+    text-align: center;
+
+}
+.arch_content_article
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.article_title
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.author
+{
+
+}
+.author_name
+{
+position: absolute;
+    left: 480px;
+}
+.download_link
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    position: absolute;
+    left: 480px;
+    font-size: 1.125em;
+}
