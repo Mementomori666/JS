@@ -9,6 +9,14 @@ $action = 'actionIndex';
 $containerStyle = 'index';
 $params = array();
 
+
+/**сюда пихать все мета теги через .=
+/* тогда они собираются из многих мест в одно и скопом выводятся
+ */
+$GLOBALS['headers'] = '';
+
+
+
 if ($_SERVER['REQUEST_URI'] != '/') {
     $urlPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $uriParts = explode('/', trim($urlPath, ' /'));
@@ -28,20 +36,25 @@ if ($_SERVER['REQUEST_URI'] != '/') {
     }
 }
 require_once 'classes/Autoload.php';
-include 'html/header.php';
-
 try {
     if(!class_exists($controller, true)) throw new Exception();
     $controllerClass = new $controller();
     if(!method_exists($controllerClass, $action)) throw new Exception();
-    $controllerClass->$action($params);
+    $content = $controllerClass->$action($params);
 } catch (Exception $e) {
     $controller = 'PageController';
     $action = 'actionNotFound';
     $controllerClass = new $controller();
-    $controllerClass->$action($params);
+    $content = $controllerClass->$action($params);
 }
-
-include 'html/menu.php';
-include 'html/footer.php';
+$menu = View::renderPhpFile('menu');
+$footer = View::renderPhpFile('footer');
+$header = View::renderPhpFile('header',[
+    'containerStyle' => $containerStyle,
+    'menu' => $menu,
+    'content' => $content,
+    'footer' => $footer,
+    'headers' => $GLOBALS['headers']
+]);
+echo $header;
 ob_end_flush();

@@ -4,9 +4,9 @@
  * @var $allReleases array
  */
 
-$article_link = explode(ROOT_DIR, $article['article_link']);
+$article_link = explode(ROOT_DIR, $article['article_link'])[1];
 $article_link = '/'.str_replace('\\', '/', $article_link);
-$preview_link = explode(ROOT_DIR, $article['preview_link']);
+$preview_link = explode(ROOT_DIR, $article['preview_link'])[1];
 $preview_link = '/'.str_replace('\\', '/', $preview_link);
 ?>
 

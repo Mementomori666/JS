@@ -2,13 +2,12 @@
 class PageController{
     public function actionIndex(){
         $breadcrums = ['Главная'];
-        View::render('main', ['breadArr' => $breadcrums]);
-        return true;
+        return View::renderPhpFile('main', ['breadArr' => $breadcrums]);
     }
 
     public function actionAbout(){
         $breadcrums = ['Главная', 'О журнале'];
-        View::render('about', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('about', ['breadArr' => $breadcrums]);
     }
 
     public function actionArch($params = null){
@@ -20,7 +19,7 @@ class PageController{
                 $releaseObject = new DataForMeta($year, $release);
                 $releaseArticles = $releaseObject->getArticle();
                 $breadcrums = ['Главная', 'Архив', $year];
-                View::render('arch', [
+                return View::renderPhpFile('arch', [
                     'breadArr' => $breadcrums,
                     'articles' => $releaseArticles,
                     'allReleases' => $allReleases,
@@ -31,7 +30,7 @@ class PageController{
                 $id_article = $params['article'];
                 $article = DataForMeta::getArticleById($id_article);
                 $breadcrums = ['Главная', 'Архив', $year];
-                View::render('article',[
+                return View::renderPhpFile('article',[
                     'breadArr' => $breadcrums,
                     'allReleases' => $allReleases,
                     'pubyear' => $year,
@@ -52,42 +51,42 @@ class PageController{
 
     public function actionContacts(){
         $breadcrums = ['Главная', 'Контакты'];
-        View::render('contacts', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('contacts', ['breadArr' => $breadcrums]);
     }
 
     public function actionEditorialBoard(){
         $breadcrums = ['Главная', 'Редакция'];
-        View::render('editorial-board', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('editorial-board', ['breadArr' => $breadcrums]);
     }
 
     public function actionEditorialPolicies(){
         $breadcrums = ['Главная', 'Порядок рассмотрения'];
-        View::render('editorial-policies', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('editorial-policies', ['breadArr' => $breadcrums]);
     }
 
     public function actionGuideForAuthors(){
         $breadcrums = ['Главная', 'Гайд для авторов'];
-        View::render('guide-for-authors', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('guide-for-authors', ['breadArr' => $breadcrums]);
     }
 
     public function actionPayment(){
         $breadcrums = ['Главная', 'Условия оплаты'];
-        View::render('payment', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('payment', ['breadArr' => $breadcrums]);
     }
 
     public function actionPublicationEthics(){
         $breadcrums = ['Главная', 'Этика публикаций'];
-        View::render('publication-ethics', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('publication-ethics', ['breadArr' => $breadcrums]);
     }
 
     public function actionArticleLoadOk(){
         $breadcrums = ['Главная', 'Опубликовать статью', 'Статья опубликована'];
-        View::render('article-load-ok', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('article-load-ok', ['breadArr' => $breadcrums]);
     }
 
     public function actionArticleLoadError(){
         $breadcrums = ['Главная', 'Опубликовать статью', 'Ошибка публикации'];
-        View::render('article-load-error', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('article-load-error', ['breadArr' => $breadcrums]);
     }
 
     public function actionServices(){
@@ -148,30 +147,30 @@ class PageController{
             $mailToAuthor->ClearAddresses();
             $mailToAuthor->ClearAttachments();
         }
-        View::render('services', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('services', ['breadArr' => $breadcrums]);
     }
     public function actionNotFound(){
         $breadcrums = ['Главная', 'Страница не найдена'];
-        View::render('not-found', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('not-found', ['breadArr' => $breadcrums]);
     }
 
     public function actionPayok(){
         $breadcrums = ['Главная', 'Условия оплаты', 'Оплата успешно проведена'];
-        View::render('payok', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('payok', ['breadArr' => $breadcrums]);
     }
 
     public function actionDoi(){
         $breadcrums = ['Главная', 'Условия оплаты', 'DOI'];
-        View::render('doi', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('doi', ['breadArr' => $breadcrums]);
     }
 
     public function actionOpenAccess(){
         $breadcrums = ['Главная', 'Условия оплаты', 'Авторский взнос и информация об авторских правах'];
-        View::render('open-access', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('open-access', ['breadArr' => $breadcrums]);
     }
 
     public function actionAffiliate(){
         $breadcrums = ['Главная', 'Условия оплаты', 'Партнерская программа'];
-        View::render('affiliate', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('affiliate', ['breadArr' => $breadcrums]);
     }
 }

@@ -6,6 +6,7 @@
     <meta name="description"
           content="Научный журнал. Публикация статей студентов, аспирантов и молодых ученых в области точных, естественных и гуманитарных наук.">
     <meta name="keywords" content="опубликовать научную статью, публикация аспирантов, научный журнал, публикация РИНЦ">
+    <?= $headers?>
     <link href="/images/ico.ico" rel="shortcut icon" type="image/x-icon">
     <link href="/css/28.07.css" rel="stylesheet">
     <link href="/css/static.css" rel="stylesheet">
@@ -259,3 +260,6 @@
 </head>
 <body>
 <div id="container">
+    <?= $menu?>
+    <?= $content?>
+    <?= $footer?>
