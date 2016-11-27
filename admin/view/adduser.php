@@ -12,7 +12,6 @@ $string = "";
 $salt = "";
 $iteration_count = 100;
 $result = '';
-echo $_SERVER['PHP_SELF'];
 if (!$salt)
    $salt = str_replace('=', '', base64_encode(md5(microtime() . '2fb65ad665a049ef414bf8e171cef0f7')));
 

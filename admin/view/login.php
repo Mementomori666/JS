@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $ref = strip_tags(trim($_GET['ref']));
     $user = strip_tags(trim($_POST['login']));
     $pass = strip_tags(trim($_POST['pass']));
-    if(!$ref) $ref = "http://".$_SERVER['HTTP_HOST']."/admin/index.php";
+    $ref = "http://".$_SERVER['HTTP_HOST']."/admin/page/add-article";
     if($user and $pass){
         if($result = userExists($user)){
             list($login, $password, $salt, $iteration) = explode(":", $result);

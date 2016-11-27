@@ -71,7 +71,7 @@ class PageController{
     }
 
     public function actionAddUser(){
-        ViewAdmin::render('addUser');
+        ViewAdmin::render('adduser');
     }
     public function actionAdmin(){
         ViewAdmin::render('login');
