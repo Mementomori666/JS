@@ -51,7 +51,7 @@
             ?>
         </div>
         <pre>
-        <?php //var_dump($articles) ?>
+        <?php var_dump($articles) ?>
         <br>
         <br>
         <?php //var_dump($allReleases) ?>

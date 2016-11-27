@@ -12,7 +12,7 @@ $string = "";
 $salt = "";
 $iteration_count = 100;
 $result = '';
-
+echo $_SERVER['PHP_SELF'];
 if (!$salt)
    $salt = str_replace('=', '', base64_encode(md5(microtime() . '2fb65ad665a049ef414bf8e171cef0f7')));
 
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
 
 ?><div id="Form" class="container">
 
-   <form class="form-horizontal"action="<?= $_SERVER['PHP_SELF']?>" method="post">
+   <form class="form-horizontal"action="/admin/page/add-user" method="post">
    <div class="form-group">
       <label for="txtUser" class="col-md-2 control-label">Логин</label>
       <div class="col-md-6">

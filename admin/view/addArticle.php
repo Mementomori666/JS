@@ -169,6 +169,56 @@
 
         </div>
         <div class="form-group">
+
+            <label for="first_page" class="col-md-2 control-label">Первая страница статьи:</label>
+
+            <div class="col-md-6">
+                <input type="text" id="first_page" class="form-control" name="first_page" required>
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <label for="last_page" class="col-md-2 control-label">Последняя страница статьи:</label>
+
+            <div class="col-md-6">
+                <input type="text" id="last_page" class="form-control" name="last_page" required>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="category" class="col-md-2 control-label">Категория:</label>
+            <div class="col-md-6">
+                <select name="category" id="category" required class="form-control"  data-live-search = "true">
+                    <option value="Математика">Математика</option>
+                    <option value="Механика">Механика</option>
+                    <option value="Информатика">Информатика</option>
+                    <option value="Физика">Физика</option>
+                    <option>Химия</option>
+                    <option>Технические науки</option>
+                    <option>Сельскохозяйственные науки</option>
+                    <option>Биология</option>
+                    <option>Медицина</option>
+                    <option>Экология</option>
+                    <option>География, Науки о земле</option>
+                    <option>Архитектура и строительство</option>
+                    <option>Филология и журналистика</option>
+                    <option>Искусствоведение</option>
+                    <option>Культурология</option>
+                    <option>Философия</option>
+                    <option>История</option>
+                    <option>Педагогика</option>
+                    <option>Психология</option>
+                    <option>Социология</option>
+                    <option>Экономика и управление</option>
+                    <option>Политология</option>
+                    <option>Международные отношения</option>
+                    <option>Правоведение</option>
+                    <option>Физическая культура и спорт</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
             <label for="article" class="col-md-2 control-label">Загрузить статью:</label>
 
             <div class="col-md-6">

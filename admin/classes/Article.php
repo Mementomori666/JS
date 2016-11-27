@@ -21,6 +21,10 @@ class Article
     private $preview_link;
     private $pubyear;
     private $num_mag;
+    private $first_page;
+    private $last_page;
+    private $category;
+
 
     public function __construct($title_ru = null,
                                 $title_en = null,
@@ -34,7 +38,10 @@ class Article
                                 $article_link = null,
                                 $preview_link = null,
                                 $pubyear = 0,
-                                $num_mag = 0)
+                                $num_mag = 0,
+                                $first_page = 0,
+                                $last_page = 0,
+                                $category = '')
     {
         $this->title_ru = $this->strClean($title_ru);
         $this->title_en = $this->strClean($title_en);
@@ -48,6 +55,33 @@ class Article
         $this->preview_link = $this->strClean($preview_link);
         $this->pubyear = $this->intClean($pubyear);
         $this->num_mag = $this->intClean($num_mag) ;
+        $this->first_page = $this->intClean($first_page) ;
+        $this->last_page = $this->intClean($last_page) ;
+        $this->category = $this->strClean($category) ;
+    }
+
+    /**
+     * @param number $first_page
+     */
+    public function setFirstPage($first_page)
+    {
+        $this->first_page = $first_page;
+    }
+
+    /**
+     * @param number $last_page
+     */
+    public function setLastPage($last_page)
+    {
+        $this->last_page = $last_page;
+    }
+
+    /**
+     * @param string $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
     }
 
     /**
@@ -167,16 +201,17 @@ class Article
         try {
             $link = Connect::getInstance()->getLink();
             $prepare = "INSERT INTO article (title_ru, title_en, annotation_ru, annotation_en, key_words_ru,
-                                key_words_en, udk, grnti, doi, article_link, preview_link, pubyear, num_mag)
+                                key_words_en, udk, grnti, doi, article_link, preview_link, pubyear, num_mag, first_page, last_page, category)
                                  VALUES (:title_ru, :title_en, :annotation_ru, :annotation_en, :key_words_ru,
-                                :key_words_en, :udk, :grnti, :doi, :article_link, :preview_link, :pubyear, :num_mag)";
+                                :key_words_en, :udk, :grnti, :doi, :article_link, :preview_link, :pubyear, :num_mag, :first_page, :last_page, :category)";
             $query = $link->prepare($prepare);
             $query->execute([':title_ru' => $this->title_ru, ':title_en' => $this->title_en,
                 ':annotation_ru' => $this->annotation_ru, ':annotation_en' => $this->annotation_en,
                 ':key_words_ru' => $this->key_words_ru, ':key_words_en' => $this->key_words_en,
                 ':udk' => $this->udk, ':grnti' => $this->grnti, ':doi' => $this->doi,
                 ':article_link' => $this->article_link, ':preview_link' => $this->preview_link,
-                ':pubyear'=>$this->pubyear, ':num_mag'=>$this->num_mag ]);
+                ':pubyear'=>$this->pubyear, ':num_mag'=>$this->num_mag, ':first_page' => $this->first_page,
+                ':last_page' => $this->last_page, ':category' => $this->category ]);
             $link->lastInsertId();
             return $link->lastInsertId();;
         } catch (Exception $e) {

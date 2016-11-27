@@ -63,7 +63,7 @@ class DataForMeta
       try {
          $link = Connect::getInstance()->getLink();
          $sql = "SELECT id, title_ru, title_en, annotation_ru, annotation_en, key_words_ru,
-                         key_words_en, udk, grnti, doi, article_link, preview_link, pubyear, num_mag 
+                         key_words_en, udk, grnti, doi, article_link, preview_link, pubyear, num_mag, first_page, last_page, category
                   FROM article 
                   WHERE pubyear = :puyear AND num_mag = :mag ;";
          $query = $link->prepare($sql);

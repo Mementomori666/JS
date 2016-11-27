@@ -15,6 +15,11 @@ class PageController{
             $year = array_keys($params)[0];
             $release = $params[$year];
             $allReleases = DataForMeta::getAllReleases();
+            $GLOBALS['headers'] .= '<meta name="citation_journal_title" content="Juvenis scientia">';
+            $GLOBALS['headers'] .= '<meta name="citation_issn" content="2414-3782">';
+            $GLOBALS['headers'] .= '<meta name="citation_eissn" content="2414-3790">';
+            $GLOBALS['headers'] .= '<meta name="citation_publication_date" content="'. $year . '""> ';
+            $GLOBALS['headers'] .= '<meta name="citation_issue" content="' . $release . '""> ';
             if(count($params) === 1) {
                 $releaseObject = new DataForMeta($year, $release);
                 $releaseArticles = $releaseObject->getArticle();
@@ -29,6 +34,38 @@ class PageController{
             }elseif(count($params) == 2){
                 $id_article = $params['article'];
                 $article = DataForMeta::getArticleById($id_article);
+                $keywords = '';
+                if(isset($article['key_words_ru']) || isset($article['key_words_en'])){
+                    $keywords .= ($article['key_words_ru'])? $article['key_words_ru'] : '';
+                    if(isset($article['key_words_ru']) || isset($article['key_words_en'])) $keywords .= ', ';
+                    $keywords .= ($article['key_words_en'])? $article['key_words_en'] : '';
+                }
+                if($keywords != '') {
+                    $GLOBALS['headers'] .= '<meta name="citation_keywords" content="' . $keywords . '"> ';
+                }
+                if(isset($article['title_ru'])){
+                    $GLOBALS['headers'] .= '<meta name="citation_title" content="' . $article['title_ru'] . '"> ';
+                }
+                if(isset($article['title_en'])){
+                    $GLOBALS['headers'] .= '<meta name="citation_title" content="' . $article['title_en'] . '"> ';
+                }
+                $GLOBALS['headers'] .= '<meta name="citation_lastpage" content="' . $article['last_page'] . '"> ';
+                $article_link = explode(ROOT_DIR, $article['article_link'])[1];
+                $article_link = 'http://jscientia.org/'.str_replace('\\', '/', $article_link);
+                $preview_link = explode(ROOT_DIR, $article['preview_link'])[1];
+                $preview_link = 'http://jscientia.org/'.str_replace('\\', '/', $preview_link);
+                $GLOBALS['headers'] .= '<meta name="citation_pdf_url" content="' . $article_link . '"> ';
+                $GLOBALS['headers'] .= '<meta name="citation_fulltext_html_url" content="' . $preview_link . '"> ';
+                $GLOBALS['headers'] .= '<meta name="citation_firstpage" content="' . $article['first_page'] . '"> ';
+                $GLOBALS['headers'] .= '<meta name="citation_lastpage" content="' . $article['last_page'] . '"> ';
+                foreach($article['authors'] as $author){
+                    if(isset($author['fio_ru'])) {
+                        $GLOBALS['headers'] .= '<meta name="citation_author" content="' . $author['fio_ru'] . '"> ';
+                    }
+                    if(isset($author['fio_en'])) {
+                        $GLOBALS['headers'] .= '<meta name="citation_author" content="' . $author['fio_en'] . '"> ';
+                    }
+                }
                 $breadcrums = ['Главная', 'Архив', $year];
                 return View::renderPhpFile('article',[
                     'breadArr' => $breadcrums,

@@ -19,7 +19,10 @@ class AddTablesArticleAuthor{
                 article_link TEXT,
                 preview_link TEXT,
                 pubyear INT,
-                num_mag INT
+                num_mag INT,
+                first_page INT,
+                last_page INT,
+                category VARCHAR (100)
                 );';
             $link->exec($query);
             echo "article table created\n<br>";
