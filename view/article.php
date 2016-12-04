@@ -97,7 +97,7 @@ $preview_link = '/' . str_replace('\\', '/', $preview_link);
             <div class="article_author">
                <span class="text_bold">Автор:
                </span>
-               <span class=" article_author_name text_font">
+               <span class=" author_name text_font">
                 <?php
                 $str = '';
                 foreach ($article['authors'] as $author) {

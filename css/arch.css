@@ -182,6 +182,7 @@ div#container {
    font-family: Tahoma, sans-serif;
    font-size: 15px;
 }
+
 .text_font2 {
    font-family: Tahoma, sans-serif;
    font-size: 12px;
@@ -258,8 +259,10 @@ div#container {
 }
 
 .author_name {
+   display: inline-block;
    position: relative;
-   left: 50%;
+   right: -50%;
+   width: 300px;
 }
 
 .download_link {
@@ -332,14 +335,6 @@ div#container {
    position: relative;
    left: auto;
 
-
-}
-
-.article_author_name {
-   display: inline-block;
-   position: relative;
-   left: 35%;
-   width: 300px;
 }
 
 .article_annotation {
