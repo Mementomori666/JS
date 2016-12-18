@@ -61,16 +61,26 @@ class DataForMeta
    private function getArticleSql()
    {
       try {
+         $data = [];
          $link = Connect::getInstance()->getLink();
-         $sql = "SELECT id, title_ru, title_en, annotation_ru, annotation_en, key_words_ru,
-                         key_words_en, udk, grnti, doi, article_link, preview_link, pubyear, num_mag, first_page, last_page, category
-                  FROM article 
-                  WHERE pubyear = :puyear AND num_mag = :mag ;";
+         $sql = "SELECT DISTINCT category.id, category.name FROM category
+                  INNER JOIN article ON category.id = article.category
+                  WHERE article.pubyear = :puyear AND article.num_mag = :mag ;";
          $query = $link->prepare($sql);
          $query->execute(array(':puyear' => $this->year, ':mag' => $this->numMag));
-         $result = $query->fetchAll(PDO::FETCH_ASSOC);
+         $categories = $query->fetchAll(PDO::FETCH_ASSOC);
+         foreach($categories as $category){
+            $sql = "SELECT id, title_ru, title_en, annotation_ru, annotation_en, key_words_ru,
+                         key_words_en, udk, grnti, doi, article_link, preview_link, pubyear, num_mag, first_page, last_page, category
+                  FROM article
+                  WHERE pubyear = :puyear AND num_mag = :mag AND category = {$category['id']};";
+            $query = $link->prepare($sql);
+            $query->execute(array(':puyear' => $this->year, ':mag' => $this->numMag));
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $data[$category['name']] = $result;
+         }
 //         var_dump($result); die();
-         return $result;
+         return $data;
       } catch (PDOException $e) {
          echo $e->getMessage();
          return false;
@@ -82,8 +92,9 @@ class DataForMeta
    {
       $articleArray = $this->getArticleSql();
 //      $authorArray = $this->getAuthorSql();
-      foreach ($articleArray as &$articles) {
-         $articles['authors'] = $this->getAuthorSql($articles['id']);
+      foreach($articleArray as &$category) {
+         foreach ($category as &$articles) {
+            $articles['authors'] = $this->getAuthorSql($articles['id']);
 //         foreach ($authorArray as $authors) {
 //            if ($articles['id'] == $authors['article_id']) {
 //               $articles['authors'] = $authors;
@@ -91,6 +102,7 @@ class DataForMeta
 //               $articlesArray["$id"] = $articles;
 //            }
 //         }
+         }
       }
       return $articleArray;
    }

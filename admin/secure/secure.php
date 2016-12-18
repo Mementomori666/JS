@@ -5,8 +5,8 @@
  * Date: 04.03.2016
  * Time: 15:44
  */
-
-define("FILE_NAME", "secure/.htpasswd");
+$file = explode('secure', __FILE__)[0];
+define("FILE_NAME", $file.'secure' . DIRECTORY_SEPARATOR . '.htpasswd');
 
 function getHash($string, $salt, $iteration_count){
     for($i=0; $i< $iteration_count; $i++){
