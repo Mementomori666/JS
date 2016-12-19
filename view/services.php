@@ -16,8 +16,8 @@
                   enctype="multipart/form-data" accept-charset="UTF-8" id="Form1"
                 >
                 <input type="hidden" name="formid" value="form1">
-                <input type="text" id="FIO" name="fio" value="" tabindex="2" required>
                 <label for="FIO" id="Label1" tabindex="1">Ф.И.О. автора, ответственного за переписку:</label>
+                <input type="text" id="fio" name="fio" value="" tabindex="2" required>
                 <label for="EMAIL" id="Label2">Действующий адрес электронной почты:</label>
                 <input type="email" id="EMAIL" name="email" value="">
                 <input type="text" id="TEL" name="phone" value="+7" required>
@@ -57,9 +57,9 @@
                 <input type="file" id="INFO" name="info" required>
                 <textarea name="message" id="MESAGE" rows="4" cols="90"></textarea>
                 <input type="submit" id="Button1" name="Отправить" value="Отправить">
-                <input type="checkbox" id="label99" name="1" value="on">
+                <input type="checkbox" id="label99" name="1" value="on" required>
                 <label for="label99" id="Label3">Материалы не направлены в другие журналы и публикуются впервые</label>
-                <input type="checkbox" id="label100" name="2" value="on">
+                <input type="checkbox" id="label100" name="2" value="on" required>
                 <label for="label100" id="Label4">Я являюсь автором представляемой статьи, согласен с размещенными на
                     данном сайте условиями публикации статей</label>
                 <label for="DOI" id="Label5">Присвоить DOI (digital object identifier)</label>
