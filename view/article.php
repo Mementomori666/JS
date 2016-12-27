@@ -22,7 +22,7 @@ $preview_link = '/' . str_replace('\\', '/', $preview_link);
                   $str .= '<a class="arch_menu_link"
                         href="/page/arch/' . $year['pubyear'] . '/' . $release['num_mag'] . '"> выпуск № '
                      . $release['num_mag'] . '</a>';
-                  $str .= '<br>';
+                  $str .= '';
                }
                $str .= '</div>';
             }

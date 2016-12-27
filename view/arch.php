@@ -17,7 +17,7 @@
                     $str .= '<a class="arch_menu_link"
                         href="/page/arch/' .$year['pubyear'] . '/' . $release['num_mag'] . '"> выпуск № '
                         . $release['num_mag'] . '</a>';
-                    $str .= '<br>';
+                    $str .= ' ';
                 }
                 $str .= '</div>';
             }
@@ -30,7 +30,7 @@
             $str = '';
             foreach ($articles as $cat_name => $category) {
                 $str .= '<div class = "arch_content_category_block">';
-                $str .= '<div class = "arch_content_category_name">' . $cat_name . '<span></span></div>';
+                $str .= '<div class = "arch_content_category_name"><span class="cat_font text_bold">' . $cat_name . '</span></div>';
                 foreach ($category as $article) {
                     $str .= '<div class="arch_content_article">';
                     if (isset($article['title_ru'])) $str .= '<div class="article_title text_font"><a class = "arch_content_article_title" href="/page/arch/' .
@@ -44,7 +44,7 @@
                     }
                     $str .= '</span> </div>';
                     if(isset($article['first_page']) && isset($article['last_page']))
-                        $str .= '<div class="arch_content_article_pages"><span>' . $article['first_page'] . '-' . $article['last_page'] . '</span></div>';
+                        $str .= '<div class="arch_content_article_pages"><span>' . $article['first_page'] . '-' . $article['last_page'] . ' стр. </span></div>';
                     if (isset($article['article_link']) && ($article['article_link'] != '')) {
                         $linkArr = explode('\\', $article['article_link']);
                         $link = $linkArr[count($linkArr) - 1];

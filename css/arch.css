@@ -4,6 +4,24 @@ div#container {
    margin: 0 auto 0 auto;
    text-align: left;
 }
+#Layer1
+{
+   position: absolute;
+   text-align: center;
+   left: 0px;
+   top: 210px;
+   width: 994px;
+   height: 653px;
+   z-index: 1;
+}
+#Layer1_Container
+{
+   width: 994px;
+   position: relative;
+   margin-left: auto;
+   margin-right: auto;
+   text-align: left;
+}
 
 #wb_CssMenu2 {
    border: 0px #00A0E4 solid;
@@ -198,9 +216,12 @@ div#container {
    position: relative;
    float: left;
    left: auto;
-   width: 15%;
+   width: 170px;
    height: 100%;
-   background-color: #f0f2f2;
+   margin-left: 10px;
+   margin-right: 20px;
+   box-shadow: 1px 1px 5px #37494d;
+   background-color: #f2f2f2;
    background-image: none;
    text-align: center;
 
@@ -221,20 +242,24 @@ div#container {
 .arch_menu_link {
    font-size: 1.35em;
    text-decoration: none;
-
+   margin-bottom: 5px;
+   display: block;
 }
 
-.arch_menu_link :hover {
+.arch_menu_link:hover {
    text-decoration: none;
    font-size: 1.35em;
    background-color: #c7ddef;
    background-image: none;
+   width: 130px;
+   margin-left: 12%;
+   box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .arch_content {
    position: relative;
    float: left;
-   width: 80%;
+   width: 75%;
    left: auto;
 }
 
@@ -247,7 +272,23 @@ div#container {
    margin-top: 5px;
    margin-bottom: 5px;
 }
+.arch_content_category_name{
+   background-color: #f0f0f0;
+   background-image: none;
+   text-align: left;
+   vertical-align: middle;
+   width: auto;
+   height: 22px;
+   padding-left: 35px;
+}
+.cat_font{
 
+   color: #00A0E4;
+   font-family: Tahoma;
+   font-size: 16px;
+   line-height: 19px;
+
+}
 .article_title {
    margin-top: 5px;
    margin-bottom: 5px;
@@ -310,9 +351,9 @@ div#container {
    float: left;
    left: auto;
    top: auto;
-   width: 625px;
-   margin-left: 15px;
-   padding-left: 10px;
+   width: 545px;
+   margin-left: 35px;
+
 }
 
 .article_title_ru {
