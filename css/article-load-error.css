@@ -138,6 +138,14 @@ div#container
     height: 653px;
     z-index: 1;
 }
+#Layer1_Container
+{
+    width: 992px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
 #wb_Image3
 {
     position: absolute;
@@ -165,14 +173,7 @@ div#container
     height: 24px;
     z-index: 10;
 }
-#Layer1_Container
-{
-    width: 992px;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-}
+
 #wb_uid0
 {
     color: #FF0000;

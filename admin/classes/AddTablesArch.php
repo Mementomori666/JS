@@ -4,9 +4,54 @@
 class AddTablesArticleAuthor{
     public static function addTables(){
         $link = Connect::getInstance()->getLink();
+        $categories = [
+           'Математика',
+           'Механика',
+           'Информатика',
+           'Физика',
+           'Химия',
+           'Технические науки',
+           'Сельскохозяйственные науки',
+           'Биология',
+           'Медицина',
+           'Экология',
+           'География, Науки о земле',
+           'Архитектура и строительство',
+           'Филология и журналистика',
+           'Искусствоведение',
+           'Культурология',
+           'Философия',
+           'История',
+           'Педагогика',
+           'Психология',
+           'Социология',
+           'Экономика и управление',
+           'Политология',
+           'Международные отношения',
+           'Правоведение',
+           'Физическая культура и спорт'
+        ];
         try {
+            $query = 'CREATE TABLE category (
+                id INTEGER PRIMARY KEY AUTO_INCREMENT,
+                name VARCHAR(200),
+                UNIQUE (name)
+                );';
+            $link->exec($query);
+            echo "Category table created\n<br>";
+            foreach($categories as $name){
+                $category = new Category($name);
+                $category->setCategory();
+            }
+            echo "All categories created\n<br>";
+        }catch (Exception $e){
+            echo $e->getMessage();
+            
+        }
+        try {
+            
             $query = 'CREATE TABLE article (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                id INTEGER PRIMARY KEY AUTO_INCREMENT,
                 title_ru VARCHAR(200),
                 title_en VARCHAR(200),
                 annotation_ru TEXT,
@@ -22,7 +67,8 @@ class AddTablesArticleAuthor{
                 num_mag INT,
                 first_page INT,
                 last_page INT,
-                category VARCHAR (100)
+                category INT NOT NULL,          
+                FOREIGN KEY(category) REFERENCES category(id)
                 );';
             $link->exec($query);
             echo "article table created\n<br>";
@@ -32,7 +78,7 @@ class AddTablesArticleAuthor{
         }
         try{
             $query = 'CREATE TABLE author(
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                id INTEGER PRIMARY KEY AUTO_INCREMENT,
                 fio_ru VARCHAR (150),
                 fio_en VARCHAR (150),
                 current_job TEXT,

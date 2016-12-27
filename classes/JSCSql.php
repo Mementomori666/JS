@@ -6,100 +6,97 @@
  * Date: 12.08.2016
  * Time: 19:47
  */
-class JSCSql {
-    const SQL_FILE = '../jscientia.sql';
 
-    private $sql;
-    private $link;
-    private $stmt;
+include_once 'Connect.php';
+class JSCSql
+{
 
-    /**
-     * JSCSql constructor.
-     * Создает подключение к БД и если она отсутствует то создает и Саму БД
-     */
-    public function __construct() {
-        if (is_file(self::SQL_FILE)) {
-            $this->link = new SQLite3(self::SQL_FILE);
-        } else {
-            $this->link = new SQLite3(self::SQL_FILE);
-            $this->sql = "CREATE TABLE Item_Menu (
-                     id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                     name TEXT, 
-                     href TEXT, 
-                     parent_id INTEGER ,
-                     css_class TEXT, 
-                     title TEXT);";
+   const SQL_FILE = '../jscientia.sql';
 
-            try {
-                function throwExept() {
-                    throw new Exception("error_pragma");
-                }
+   private $sql;
+   private $link;
+   private $stmt;
 
-                $this->link->query('PRAGMA encoding="UTF-8";') or throwExept();
-                $this->link->exec($this->sql);
-            } catch (Exception $e) {
-                echo $this->link->lastErrorMsg();
-                echo $e->getMessage();
-            }
+   /**
+    * JSCSql constructor.
+    * Создает подключение к БД и если она отсутствует то создает и Саму БД
+    */
 
-        }
+   public function __construct()
+   {
+      try {
+         $this->link = Connect::getInstance()->getLink();
+      }catch (PDOException $e)
+      {
+         echo $e->getMessage();
+      }
+   }
+      public function addMenuTable(){
+         try{
+        $sql = "CREATE TABLE Item_Menu (
+                     id int AUTO_INCREMENT, 
+                     name VARCHAR(20), 
+                     href VARCHAR(50), 
+                     parent_id int,
+                     css_class VARCHAR(30) , 
+                     title VARCHAR(30),
+                     PRIMARY KEY (id));";
+         $this->link->exec($sql);
 
-    }
+      } catch (PDOException $e) {
+         echo $e->getMessage();
+      }
+   }
 
-    public function __destruct() {
-        unset($this->link);
-    }
+   public function __destruct()
+   {
+      unset($this->link);
+   }
 
-    /**
-     * Метод принимает массив и добавляет его содержимое в БД
-     */
-    function SetLinks($arr = array()) {
+   /**
+    * Метод принимает массив и добавляет его содержимое в БД
+    */
+  public function SetLinks($arr = array())
+   {
 
-        try {
-            foreach ($arr as $arrItem) {
-                $name = $arrItem['name'];
-                $href = $arrItem['href'];
-                $parent_id = $arrItem['parent_id'];
-                $css_class = $arrItem['css_class'];
-                $title = $arrItem['title'];
+      try {
+         $this->addMenuTable();
+         foreach ($arr as $arrItem) {
+            $name = $arrItem['name'];
+            $href = $arrItem['href'];
+            $parent_id = $arrItem['parent_id'];
+            $css_class = $arrItem['css_class'];
+            $title = $arrItem['title'];
 
-                $this->stmt = $this->link->prepare('INSERT INTO Item_Menu (name, href, parent_id, css_class,title)
+            $this->stmt = $this->link->prepare('INSERT INTO Item_Menu (name, href, parent_id, css_class,title)
                               VALUES (:name, :href, :parent_id, :css_class, :title)');
-                $this->stmt->bindParam(':name', $name);
-                $this->stmt->bindParam(':href', $href);
-                $this->stmt->bindParam(':parent_id', $parent_id);
-                $this->stmt->bindParam(':css_class', $css_class);
-                $this->stmt->bindParam(':title', $title);
-                $this->stmt->execute();
-                $this->stmt->close();
-            }
-        } catch (Exception $e) {
-            echo $this->link->lastErrorMsg();
-        }
-    }
 
-    /**
-     * Метод возращает всё содержимое бд
-     */
-    public function GetLinks() {
-        try {
-            $this->sql = "SELECT name, href, parent_id, css_class, title
+            $this->stmt->execute(array(':name' => $name, ':href' => $href, ':parent_id' => $parent_id,
+               ':css_class' => $css_class, ':title' => $title));
+
+         }
+      } catch (PDOException $e) {
+         echo $e->getMessage();
+      }
+   }
+
+   /**
+    * Метод возращает всё содержимое бд
+    */
+   public function GetLinks()
+   {
+      try {
+         $this->sql = "SELECT name, href, parent_id, css_class, title
                     FROM Item_Menu;";
 
-            $result = $this->link->query($this->sql);
-            $rows = array();
-            while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-                $rows[] = $row;
-            }
+         $result = $this->link->query($this->sql, PDO::FETCH_ASSOC);
+         foreach ($result as $item)
+            var_dump($item);
+            return $item;
 
-            if (is_array($rows)) {
-                return $rows;
-            } else {
-                throw (new Exception ('not_array'));
-            }
-        } catch (Exception $e) {
-            echo $e->getMessage();
-            echo $this->link->lastErrorMsg();
-        }
-    }
+      } catch (Exception $e) {
+         echo $e->getMessage();
+         echo $this->link->lastErrorMsg();
+      }
+   }
 }
