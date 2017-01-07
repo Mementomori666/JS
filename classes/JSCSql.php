@@ -10,9 +10,6 @@
 include_once 'Connect.php';
 class JSCSql
 {
-
-   const SQL_FILE = '../jscientia.sql';
-
    private $sql;
    private $link;
    private $stmt;
@@ -86,13 +83,10 @@ class JSCSql
    public function GetLinks()
    {
       try {
-         $this->sql = "SELECT name, href, parent_id, css_class, title
+          $this->sql = "SELECT name, href, parent_id, css_class, title
                     FROM Item_Menu;";
-
-         $result = $this->link->query($this->sql, PDO::FETCH_ASSOC);
-         foreach ($result as $item)
-            var_dump($item);
-            return $item;
+          $result = $this->link->query($this->sql, PDO::FETCH_ASSOC);
+          return $result;
 
       } catch (Exception $e) {
          echo $e->getMessage();

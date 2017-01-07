@@ -1,5 +1,8 @@
 <div id="Layer1">
     <div id="Layer1_Container">
+        <?php
+        if($allDone == true) echo "<span class='form-good'>Статья успешно отправлена</span>";
+        ?>
         <div id="wb_Text2">
             <span id="wb_uid0"><strong>Опубликовать статью</strong></span><span id="wb_uid1"><br><br></span><span
                 id="wb_uid2"><strong>К рассмотрению принимаются:</strong> не публиковавшиеся ранее статьи студентов (в соавторстве с научным руководителем), магистрантов, соискателей, аспирантов, докторантов, научных и педагогических работников на русском и английском языках.<br><br><strong>Разделы
@@ -12,16 +15,22 @@
                     регистрационного номера статьи в теме письма.</strong><br><br></span><span id="wb_uid3"><strong>Статьи,
                     оформленные с нарушением настоящих требований, редакцией не рассматриваются.</strong></span></div>
         <div id="wb_Form1">
+            <div>
+                <?php
+                foreach($errors as $error){
+                    echo "<span class='form-error'>$error</span><br>";
+                }?>
+            </div>
             <form name="Форма_подачи_статьи" method="post" action="/page/services"
                   enctype="multipart/form-data" accept-charset="UTF-8" id="Form1"
                 >
                 <input type="hidden" name="formid" value="form1">
-                <label for="FIO" id="Label1" tabindex="1">Ф.И.О. автора, ответственного за переписку:</label>
-                <input type="text" id="fio" name="fio" value="" tabindex="2" required>
+                <label for="fio" id="Label1" tabindex="1">Ф.И.О. автора, ответственного за переписку:</label>
+                <input type="text" id="fio" name="fio" value="<?= isset($_POST['fio']) ? $_POST['fio'] : '' ?>" tabindex="2" required>
                 <label for="EMAIL" id="Label2">Действующий адрес электронной почты:</label>
-                <input type="email" id="EMAIL" name="email" value="">
-                <input type="text" id="TEL" name="phone" value="+7" required>
-                <input type="text" id="ARTICLE_NAME" name="article_name" value="">
+                <input type="email" id="EMAIL" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" required>
+                <input type="text" id="TEL" name="phone" value="<?= isset($_POST['phone']) ? $_POST['phone'] : '+7' ?>" required>
+                <input type="text" id="ARTICLE_NAME" name="article_name" value="<?= isset($_POST['article_name']) ? $_POST['article_name'] : '' ?>">
                 <select name="section" size="1" id="SECTION">
                     <option value="Математика">Математика</option>
                     <option value="Механика">Механика</option>
@@ -65,10 +74,10 @@
                 <label for="DOI" id="Label5">Присвоить DOI (digital object identifier)</label>
                 <label for="pSERTIFICATE" id="label44">Печатный сертификат о публикации</label>
                 <label for="JOURNAL" id="Label8">Печатный экземпляр журнала</label>
-                <input type="checkbox" id="DOI" name="doi" value="on">
-                <input type="checkbox" id="pSERTIFICATE" name="pSertificate" value="on">
-                <input type="checkbox" id="eSERTIFICATE" name="eSertificate" value="on">
-                <input type="checkbox" id="JOURNAL" name="journal" value="on">
+                <input type="checkbox" id="DOI" name="doi" checked>
+                <input type="checkbox" id="pSERTIFICATE" name="pSertificate" checked>
+                <input type="checkbox" id="eSERTIFICATE" name="eSertificate" checked>
+                <input type="checkbox" id="JOURNAL" name="journal" checked>
                 <label for="eSERTIFICATE" id="Label7">Электронный сертификат о публикации</label>
                 <label for="" id="Label9">Дополнительно, если необходимо:</label>
                 <label for="MESAGE" id="Label10">Сообщение:</label>
@@ -80,20 +89,20 @@
                 <label for="ARTICLE" id="Label16">Загрузить статью:</label>
 
                 <div id="wb_Text4">
-                    <span id="wb_uid4"><strong><a href="./files/JS_info_ru.doc">?</a></strong></span></div>
+                    <span id="wb_uid4"><strong><a href="/files/JS_info_ru.doc">?</a></strong></span></div>
                 <div id="wb_Text5">
-                    <span id="wb_uid5"><a href="./agreement.html">Публичная Оферта</a> (редакция от 30.07.2016)</span>
+                    <span id="wb_uid5"><a href="./agreement">Публичная Оферта</a> (редакция от 30.07.2016)</span>
                 </div>
             </form>
         </div>
         <div id="wb_Image2">
-            <a href="./files/JS_example_ru.doc"><img src="../images/img0052.png" id="Image2" alt=""></a></div>
+            <a href="/files/JS_example_ru.doc"><img src="../images/img0052.png" id="Image2" alt=""></a></div>
         <div id="wb_Image17">
-            <a href="./files/JS_info_ru.doc"><img src="../images/img0013.png" id="Image17" alt=""></a></div>
+            <a href="/files/JS_info_ru.doc"><img src="../images/img0013.png" id="Image17" alt=""></a></div>
         <div id="wb_Text6">
-            <span id="wb_uid6"><a href="./files/JS_example_ru.doc">Пример оформления статьи</a></span></div>
+            <span id="wb_uid6"><a href="/files/JS_example_ru.doc">Пример оформления статьи</a></span></div>
         <div id="wb_Text7">
-            <span id="wb_uid7"><a href="./files/JS_info_ru.doc">Сведения об авторах </a><br><a
+            <span id="wb_uid7"><a href="/files/JS_info_ru.doc">Сведения об авторах </a><br><a
                     href="./files/JS_info_ru.doc">и статье</a></span></div>
     </div>
 </div>

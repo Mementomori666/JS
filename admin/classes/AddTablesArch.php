@@ -1,7 +1,7 @@
 <?php
 
 
-class AddTablesArticleAuthor{
+class AddTablesArch{
     public static function addTables(){
         $link = Connect::getInstance()->getLink();
         $categories = [

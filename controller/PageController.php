@@ -49,7 +49,6 @@ class PageController{
                 if(isset($article['title_en'])){
                     $GLOBALS['headers'] .= '<meta name="citation_title" content="' . $article['title_en'] . '"> ';
                 }
-                $GLOBALS['headers'] .= '<meta name="citation_lastpage" content="' . $article['last_page'] . '"> ';
                 $article_link = explode(ROOT_DIR, $article['article_link'])[1];
                 $article_link = 'http://jscientia.org/'.str_replace('\\', '/', $article_link);
                 $preview_link = explode(ROOT_DIR, $article['preview_link'])[1];
@@ -127,64 +126,81 @@ class PageController{
     }
 
     public function actionServices(){
+        $allDone = false;
         $breadcrums = ['Главная', 'Опубликовать статью'];
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $paramsForAuthor['fio'] = $paramsForAdmin['fio'] = htmlspecialchars(trim($_POST['fio']));
+        $errors = array();
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if ($_POST['fio'] == null || !FormHelper::lettersAndMarks($_POST['fio'])) $errors[] = FormHelper::ERROR_FIO;
+            else $paramsForAuthor['fio'] = $paramsForAdmin['fio'] = FormHelper::clearStr($_POST['fio']);
+
             $paramsForAuthor['article_name'] = $paramsForAdmin['article_name']
-                = htmlspecialchars(trim($_POST['article_name']));
-            $paramsForAdmin['email'] = htmlspecialchars(trim($_POST['email']));
-            $paramsForAdmin['phone'] = htmlspecialchars(trim($_POST['phone']));
-            $paramsForAdmin['section'] = htmlspecialchars(trim($_POST['section']));
-            $paramsForAdmin['language'] = htmlspecialchars(trim($_POST['language']));
-            if(isset($_POST['message'])) $paramsForAdmin['message'] = htmlspecialchars(trim($_POST['message']));
-            if(isset($_POST['doi'])) $paramsForAdmin['doi'] = htmlspecialchars(trim($_POST['doi']));
-            if(isset($_POST['eSertificate']))
-                $paramsForAdmin['eSertificate'] = htmlspecialchars(trim($_POST['eSertificate']));
-            if(isset($_POST['pSertificate']))
-                $paramsForAdmin['pSertificate'] = htmlspecialchars(trim($_POST['pSertificate']));
-            if(isset($_POST['journal'])) $paramsForAdmin['journal'] = htmlspecialchars(trim($_POST['journal']));
+                = FormHelper::clearStr($_POST['article_name']);
 
-            $mailToAdmin = new JPhpMailer();
-            $mailToAdmin->Subject = 'На публикацию поступила новая статья в журнал jscientia';
-            $mailToAdmin->Body = View::renderPhpFile('mail_service_to_admin', $paramsForAdmin);
-            $mailToAdmin->AddAddress(ADMIN_MALE);
-            if (isset($_FILES['info']) &&
-                $_FILES['info']['error'] == UPLOAD_ERR_OK) {
-                $mailToAdmin->AddAttachment($_FILES['info']['tmp_name'],
-                    $_FILES['info']['name']);
-            }
-            if (isset($_FILES['article']) &&
-                $_FILES['article']['error'] == UPLOAD_ERR_OK) {
-                $mailToAdmin->AddAttachment($_FILES['article']['tmp_name'],
-                    $_FILES['article']['name']);
-            }
-            if(!$mailToAdmin->Send())
-            {
-                echo 'Не могу отослать письмо!';
-            }
-            else
-            {
-                echo 'Письмо отослано!';
-            }
-            $mailToAdmin->ClearAddresses();
-            $mailToAdmin->ClearAttachments();
+            if ($_POST['email'] == null || !FormHelper::emailValidator($_POST['email'])) $errors[] = FormHelper::ERROR_EMAIL;
+            else $paramsForAdmin['email'] = FormHelper::clearStr($_POST['email']);
 
-            $mailToAuthor = new JPhpMailer();
-            $mailToAuthor->Subject = 'Статья получена редакцией';
-            $mailToAuthor->Body = View::renderPhpFile('mail_service_to_author', $paramsForAuthor);
-            $mailToAuthor->AddAddress(htmlspecialchars(trim($_POST['email'])));
-            if(!$mailToAuthor->Send())
-            {
-                echo 'Не могу отослать письмо!';
+            if ($_POST['phone'] == null || !FormHelper::phoneValidator($_POST['phone'])) $errors[] = FormHelper::ERROR_PHONE;
+            else $paramsForAdmin['phone'] = FormHelper::clearStr($_POST['phone']);
+
+            $paramsForAdmin['section'] = FormHelper::clearStr($_POST['section']);
+            $paramsForAdmin['language'] = FormHelper::clearStr($_POST['language']);
+            if (isset($_POST['message'])) $paramsForAdmin['message'] = FormHelper::clearStr($_POST['message']);
+            if (isset($_POST['doi'])) $paramsForAdmin['doi'] = (boolean)$_POST['doi'];
+            if (isset($_POST['eSertificate']))
+                $paramsForAdmin['eSertificate'] = (boolean)$_POST['eSertificate'];
+            if (isset($_POST['pSertificate']))
+                $paramsForAdmin['pSertificate'] = (boolean)$_POST['pSertificate'];
+            if (isset($_POST['journal'])) $paramsForAdmin['journal'] = (boolean)$_POST['journal'];
+            if (!isset($_POST['1']) || $_POST['1'] === false) $errors[] = FormHelper::ERROR_UNIQUE;
+            if (!isset($_POST['2']) || $_POST['2'] === false) $errors[] = FormHelper::ERROR_IS_AUTHOR;
+            if(isset($_FILES['article'])){
+                $path_info = pathinfo($_FILES['article']['name']);
+                if(!FormHelper::fileValidator($path_info['extension'])) $errors[] = FormHelper::ERROR_FILE;
             }
-            else
-            {
-                echo 'Письмо отослано!';
+
+            if(isset($_FILES['info'])){
+                $path_info = pathinfo($_FILES['info']['name']);
+                if(!FormHelper::fileValidator($path_info['extension'])) $errors[] = FormHelper::ERROR_FILE;
             }
-            $mailToAuthor->ClearAddresses();
-            $mailToAuthor->ClearAttachments();
+
+
+            if ($errors == null) {
+                $mailToAdmin = new JPhpMailer();
+                $mailToAdmin->Subject = 'На публикацию поступила новая статья в журнал jscientia';
+                $mailToAdmin->Body = View::renderPhpFile('mail_service_to_admin', $paramsForAdmin);
+                $mailToAdmin->AddAddress(ADMIN_MALE);
+                if (isset($_FILES['info']) &&
+                    $_FILES['info']['error'] == UPLOAD_ERR_OK
+                ) {
+                    $mailToAdmin->AddAttachment($_FILES['info']['tmp_name'],
+                        $_FILES['info']['name']);
+                }
+                if (isset($_FILES['article']) &&
+                    $_FILES['article']['error'] == UPLOAD_ERR_OK
+                ) {
+                    $mailToAdmin->AddAttachment($_FILES['article']['tmp_name'],
+                        $_FILES['article']['name']);
+                }
+                if (!$mailToAdmin->Send()) {
+                    $errors[] = FormHelper::ERROR_EMAIL_FAIL;
+                }
+                $mailToAdmin->ClearAddresses();
+                $mailToAdmin->ClearAttachments();
+
+                $mailToAuthor = new JPhpMailer();
+                $mailToAuthor->Subject = 'Статья получена редакцией';
+                $mailToAuthor->Body = View::renderPhpFile('mail_service_to_author', $paramsForAuthor);
+                $mailToAuthor->AddAddress(FormHelper::clearStr($_POST['email']));
+                if (!$mailToAuthor->Send()) {
+                    $errors[] = FormHelper::ERROR_EMAIL_FAIL;
+                }
+                $mailToAuthor->ClearAddresses();
+                $mailToAuthor->ClearAttachments();
+                $allDone = true;
+                unset($_POST);
+            }
         }
-        return View::renderPhpFile('services', ['breadArr' => $breadcrums]);
+        return View::renderPhpFile('services', ['breadArr' => $breadcrums, 'errors' => $errors, 'allDone' => $allDone]);
     }
     public function actionNotFound(){
         $breadcrums = ['Главная', 'Страница не найдена'];
@@ -209,5 +225,9 @@ class PageController{
     public function actionAffiliate(){
         $breadcrums = ['Главная', 'Условия оплаты', 'Партнерская программа'];
         return View::renderPhpFile('affiliate', ['breadArr' => $breadcrums]);
+    }
+    public function actionAgreement(){
+        $breadcrums = ['Главная', 'Публичная оферта'];
+        return View::renderPhpFile('agreement', ['breadArr' => $breadcrums]);
     }
 }

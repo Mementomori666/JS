@@ -1439,3 +1439,16 @@ body
     font-family: Tahoma;
     font-size: 20px;
 }
+.form-error{
+    color: #FF0000;
+    font-family: Tahoma;
+    font-size: 15px;
+}
+.form-good{
+    position: relative;
+    left: 45px;
+    color: #1a7016;
+    font-family: Tahoma;
+    font-size: 25px;
+    font-weight: bold;
+}
