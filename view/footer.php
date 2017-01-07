@@ -12,8 +12,8 @@
     <a href="http://www.linkedin.com/groups/8554136" target="_blank"><img src="/images/in.png" id="Image13" alt=""></a></div>
 <div id="wb_Image16">
     <a href="http://vk.com/jscientia" target="_blank"><img src="/images/vk.png" id="Image16" alt=""></a></div>
-<form name="SiteSearch1_form" id="SiteSearch1_form" onsubmit="return searchPage(features)">
-    <input type="text" id="SiteSearch1" name="SiteSearch1" value="" placeholder="&#1055;&#1086;&#1080;&#1089;&#1082;..."></form>
+<!--<form name="SiteSearch1_form" id="SiteSearch1_form" onsubmit="return searchPage(features)">-->
+<!--    <input type="text" id="SiteSearch1" name="SiteSearch1" value="" placeholder="&#1055;&#1086;&#1080;&#1089;&#1082;..."></form>-->
 </div>
 </body>
 </html>

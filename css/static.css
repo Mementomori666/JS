@@ -105,7 +105,7 @@ body
    font-size: 15px;
    font-style: normal;
    text-decoration: none;
-   width: 93.02%;
+   width: 94%;
    height: 30px;
    padding: 0px 5px 0px 5px;
    vertical-align: middle;
@@ -134,7 +134,7 @@ body
 #wb_CssMenu1 a.withsubmenu
 {
    padding: 0 5px 0 5px;
-   width: 93.02%;
+   width: 100%;
    background-image: none;
 }
 #wb_CssMenu1 li:hover a.withsubmenu, #wb_CssMenu1 a.withsubmenu:hover
@@ -428,7 +428,7 @@ body
    position: absolute;
    left: 0px;
    top: 150px;
-   width: 860px;
+   width: 993px;
    height: 30px;
    text-align: center;
    z-index: 19;
