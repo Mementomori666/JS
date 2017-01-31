@@ -25,13 +25,13 @@
                   enctype="multipart/form-data" accept-charset="UTF-8" id="Form1"
                 >
                 <input type="hidden" name="formid" value="form1">
-                <label for="fio" id="Label1" tabindex="1">Ф.И.О. автора, ответственного за переписку:</label>
-                <input type="text" id="fio" name="fio" value="<?= isset($_POST['fio']) ? $_POST['fio'] : '' ?>" tabindex="2" required>
+                <label for="fio" id="Label1" >Ф.И.О. автора, ответственного за переписку:</label>
+                <input type="text" id="fio" name="fio"  value="<?= isset($_POST['fio']) ? $_POST['fio'] : '' ?>" tabindex="1" required>
                 <label for="EMAIL" id="Label2">Действующий адрес электронной почты:</label>
-                <input type="email" id="EMAIL" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" required>
-                <input type="text" id="TEL" name="phone" value="<?= isset($_POST['phone']) ? $_POST['phone'] : '+7' ?>" required>
-                <input type="text" id="ARTICLE_NAME" name="article_name" value="<?= isset($_POST['article_name']) ? $_POST['article_name'] : '' ?>">
-                <select name="section" size="1" id="SECTION">
+                <input type="email" id="EMAIL" name="email" tabindex="2" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" required>
+                <input type="text" id="TEL" name="phone" tabindex="3" value="<?= isset($_POST['phone']) ? $_POST['phone'] : '+7' ?>" required>
+                <input type="text" id="ARTICLE_NAME" tabindex="5" name="article_name" value="<?= isset($_POST['article_name']) ? $_POST['article_name'] : '' ?>">
+                <select name="section" size="1" id="SECTION" tabindex="6">
                     <option value="Математика">Математика</option>
                     <option value="Механика">Механика</option>
                     <option value="Информатика">Информатика</option>
@@ -58,26 +58,26 @@
                     <option>Правоведение</option>
                     <option>Физическая культура и спорт</option>
                 </select>
-                <select name="language" size="1" id="LANG">
+                <select name="language" size="1" id="LANG"tabindex="7">
                     <option value="Русский">Русский</option>
                     <option value="Английский">Английский</option>
                 </select>
-                <input type="file" id="ARTICLE" name="article" required>
-                <input type="file" id="INFO" name="info" required>
-                <textarea name="message" id="MESAGE" rows="4" cols="90"></textarea>
-                <input type="submit" id="Button1" name="Отправить" value="Отправить">
-                <input type="checkbox" id="label99" name="1" value="on" required>
+                <input type="file" id="ARTICLE" name="article" tabindex="8" required>
+                <input type="file" id="INFO" name="info" tabindex="4" required>
+                <textarea name="message" id="MESAGE" rows="4" tabindex="13" cols="90"></textarea>
+                <input type="submit" id="Button1" name="Отправить" tabindex="16" value="Отправить">
+                <input type="checkbox" id="label99" name="1" value="on" tabindex="14" required>
                 <label for="label99" id="Label3">Материалы не направлены в другие журналы и публикуются впервые</label>
-                <input type="checkbox" id="label100" name="2" value="on" required>
+                <input type="checkbox" id="label100" name="2" tabindex="15" value="on" required>
                 <label for="label100" id="Label4">Я являюсь автором представляемой статьи, согласен с размещенными на
                     данном сайте условиями публикации статей</label>
                 <label for="DOI" id="Label5">Присвоить DOI (digital object identifier)</label>
                 <label for="pSERTIFICATE" id="label44">Печатный сертификат о публикации</label>
                 <label for="JOURNAL" id="Label8">Печатный экземпляр журнала</label>
-                <input type="checkbox" id="DOI" name="doi" checked>
-                <input type="checkbox" id="pSERTIFICATE" name="pSertificate" checked>
-                <input type="checkbox" id="eSERTIFICATE" name="eSertificate" checked>
-                <input type="checkbox" id="JOURNAL" name="journal" checked>
+                <input type="checkbox" id="DOI" name="doi" tabindex="9" checked>
+                <input type="checkbox" id="pSERTIFICATE" name="pSertificate" tabindex="10" checked>
+                <input type="checkbox" id="eSERTIFICATE" name="eSertificate"tabindex="11" checked>
+                <input type="checkbox" id="JOURNAL" name="journal" tabindex="12"checked>
                 <label for="eSERTIFICATE" id="Label7">Электронный сертификат о публикации</label>
                 <label for="" id="Label9">Дополнительно, если необходимо:</label>
                 <label for="MESAGE" id="Label10">Сообщение:</label>
