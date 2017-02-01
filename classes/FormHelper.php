@@ -16,7 +16,12 @@ class FormHelper
     }
 
     public static function lettersAndMarks($str){
-        return preg_match('/^[-A-zА-яЁё.,\']+$/', $str);
+        $preg= '/^[-A-zА-яЁё.,\'\s]+$/u';
+        var_dump(preg_match($preg, $str));
+        var_dump($str);
+        var_dump($preg);
+
+        return preg_match($preg, $str);
     }
 
     public static function emailValidator($email){
@@ -24,7 +29,7 @@ class FormHelper
     }
 
     public static function phoneValidator($phone){
-        return preg_match('/^[-0-9+]+$/', $phone);
+        return preg_match('/^[-0-9()\+]+$/', $phone);
     }
 
     public static function fileValidator($ext){
