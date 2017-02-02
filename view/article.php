@@ -34,6 +34,7 @@ $preview_link = '/' . str_replace('\\', '/', $preview_link);
                <a href="<?= $article_link ?>">
                   <img src="<?= $preview_link ?>">
                </a>
+               
             </div>
             <div class="article_code">
                <ul>
