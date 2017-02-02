@@ -87,7 +87,6 @@
                 <label for="SECTION" id="Label14">Раздел журнала:</label>
                 <label for="LANG" id="Label15">Язык статьи:</label>
                 <label for="ARTICLE" id="Label16">Загрузить статью:</label>
-
                 <div id="wb_Text4">
                     <span id="wb_uid4"><strong><a href="/files/JS_info_ru.doc">?</a></strong></span></div>
                 <div id="wb_Text5">
