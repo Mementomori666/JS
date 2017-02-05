@@ -1,7 +1,7 @@
 <div id="Layer1">
     <div id="Layer1_Container">
         <?php
-        if($allDone == true) echo "<span class='form-good'>Статья успешно отправлена</span>";
+        if(isset($_GET['mail']) && $_GET['mail'] == 'ok') echo "<span class='form-good'>Статья успешно отправлена</span>";
         ?>
         <div id="wb_Text2">
             <span id="wb_uid0"><strong>Опубликовать статью</strong></span><span id="wb_uid1"><br><br></span><span
@@ -14,7 +14,7 @@
                     вопросы высылайте, пожалуйста, на адрес электронной почты редакции (edit@jscientia.org) с указанием
                     регистрационного номера статьи в теме письма.</strong><br><br></span><span id="wb_uid3"><strong>Статьи,
                     оформленные с нарушением настоящих требований, редакцией не рассматриваются.</strong></span></div>
-        <div id="wb_Form1">
+        <div id="wb_Form1" name="wb_Form1">
             <div>
                 <?php
                 foreach($errors as $error){

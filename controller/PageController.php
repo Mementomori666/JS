@@ -126,7 +126,6 @@ class PageController{
     }
 
     public function actionServices(){
-        $allDone = false;
         $breadcrums = ['Главная', 'Опубликовать статью'];
         $errors = array();
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -196,11 +195,11 @@ class PageController{
                 }
                 $mailToAuthor->ClearAddresses();
                 $mailToAuthor->ClearAttachments();
-                $allDone = true;
                 unset($_POST);
+                header("Location: services?mail=ok");
             }
         }
-        return View::renderPhpFile('services', ['breadArr' => $breadcrums, 'errors' => $errors, 'allDone' => $allDone]);
+        return View::renderPhpFile('services', ['breadArr' => $breadcrums, 'errors' => $errors]);
     }
     public function actionNotFound(){
         $breadcrums = ['Главная', 'Страница не найдена'];
