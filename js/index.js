@@ -13,7 +13,8 @@ $(document).ready(function(){
             var sliceReg = new RegExp("^[-A-zА-яЁё.,/'\\s]+");
             if (!reg.test(input)) {
                 alert("В этом поле можно использовать только буквы");
-                input = sliceReg.exec(input)[0];
+                input = sliceReg.exec(input);
+                input = (input != undefined)? input[0] : '';
                 $(this).val(input);
             }
         }
@@ -27,7 +28,8 @@ $(document).ready(function(){
             var sliceReg = /^[-\+0-9()]+/g;
             if (!reg.test(input)) {
                 alert("В этом поле можно использовать только цифры");
-                input = sliceReg.exec(input)[0];
+                input = sliceReg.exec(input);
+                input = (input != undefined)? input[0] : '';
                 $(this).val(input);
             }
         }
