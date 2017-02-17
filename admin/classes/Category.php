@@ -41,7 +41,7 @@ class Category
 
     public static function getCategoryForDropDown(){
         $data = '';
-        try{
+        try {
             $link = Connect::getInstance()->getLink();
             $sql = 'SELECT * FROM category';
             $result = $link->query($sql, PDO::FETCH_ASSOC);

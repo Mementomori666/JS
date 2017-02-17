@@ -5,7 +5,7 @@
  * Date: 13.08.2016
  * Time: 16:06
  */
-require_once '../classes/JSCSql.php';
+require_once 'JSCSql.php';
 
 if ($_SERVER['REQUEST_METHOD']=='POST'){
    $jscientia = new JSCSql();

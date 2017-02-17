@@ -7,7 +7,8 @@
  * Time: 19:47
  */
 
-include_once 'Connect.php';
+include_once 'Autoload.php';
+//include_once '../../classes/Connect.php';
 class JSCSql
 {
    private $sql;
@@ -85,7 +86,10 @@ class JSCSql
       try {
           $this->sql = "SELECT name, href, parent_id, css_class, title
                     FROM Item_Menu;";
-          $result = $this->link->query($this->sql, PDO::FETCH_ASSOC);
+          $stmt = $this->link->prepare($this->sql);
+         $stmt->execute();
+         $result=$stmt->fetchAll(PDO::FETCH_ASSOC);
+       // var_dump($result);
           return $result;
 
       } catch (Exception $e) {

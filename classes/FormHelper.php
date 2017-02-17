@@ -16,7 +16,7 @@ class FormHelper
     }
 
     public static function lettersAndMarks($str){
-        $preg= '/^[-A-zА-яЁё.,\'\s]+$/u';
+        $preg= '/^[-A-zА-яЁё.,\' \s]+$/u';
         return preg_match($preg, $str);
     }
 
